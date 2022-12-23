@@ -12,7 +12,7 @@ importers:
       prettier: 2.8.1
       turbo: 1.6.3
 
-  apps/auto-canhas:
+  apps/studio:
     specifiers:
       '@sanity/eslint-config-studio': ^2.0.1
       '@sanity/vision': ^3.0.0
