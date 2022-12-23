@@ -1,5 +1,18 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "../../packages/ui/Logo.tsx",
+    "../../packages/ui/Logo.tsx",
+    "../../packages/ui/page.tsx",
+    "../../packages/ui/page.tsx",
+    "../../packages/ui/SearchBar.tsx",
+    "../../packages/ui/SearchBar.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
