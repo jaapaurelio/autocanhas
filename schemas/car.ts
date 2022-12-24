@@ -1,3 +1,5 @@
+import { defineType, defineField } from "sanity";
+
 const fuel = [
   "Diesel",
   "Eléctrico",
@@ -64,32 +66,32 @@ const extras = [
   "Suspensão pneumática",
 ];
 
-export default {
+const car = defineType({
   name: "car",
   type: "document",
   title: "Carros",
   fields: [
-    {
+    defineField({
       name: "name",
       type: "string",
       title: "Título",
       description: "ex: Renault Megane 1.5 DCI 84cv 2020",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "brand",
       type: "reference",
       title: "Marca",
       to: [{ type: "brand" }],
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "model",
       type: "string",
       title: "Modelo",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "photos",
       type: "array",
       title: "Fotos",
@@ -98,27 +100,27 @@ export default {
         layout: "grid",
       },
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "year",
       type: "number",
       title: "Ano",
       validation: (Rule) => Rule.required().min(1900).max(2024),
-    },
-    {
+    }),
+    defineField({
       name: "price",
       type: "number",
       title: "Preço €",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "km",
       type: "number",
       title: "Quilómetros (km)",
       validation: (Rule) => Rule.required(),
       description: "ex: 90000",
-    },
-    {
+    }),
+    defineField({
       title: "Caixa",
       name: "transmission",
       type: "string",
@@ -126,20 +128,20 @@ export default {
         list: ["Manual", "Automática"],
       },
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "doors",
       type: "number",
       title: "Portas",
       validation: (Rule) => Rule.required().min(1).max(10),
-    },
-    {
+    }),
+    defineField({
       name: "seats",
       type: "number",
       title: "Lugares",
       validation: (Rule) => Rule.min(1).max(20),
-    },
-    {
+    }),
+    defineField({
       title: "Combustível",
       name: "fuel",
       type: "string",
@@ -147,8 +149,8 @@ export default {
         list: fuel,
       },
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       title: "Extras",
       name: "extras",
       type: "array",
@@ -157,12 +159,14 @@ export default {
         list: extras.map((extra) => ({ value: extra, title: extra })),
         layout: "grid",
       },
-    },
-    {
+    }),
+    defineField({
       title: "Informação extra",
       name: "info",
       type: "text",
       description: "Pequeno texto com mais informação sobre o carro.",
-    },
+    }),
   ],
-};
+});
+
+export default car;
