@@ -6,10 +6,27 @@ import client from "../../../../lib/sanityClient";
 import urlFor from "../../../../lib/urlFor";
 import { Car } from "../../../../typings";
 
+export const revalidate = 60;
+
 interface Props {
   params: {
     slug: string;
   };
+}
+
+export async function generateStaticParams() {
+  const query = groq`
+        *[_type=='car']{
+            _id
+        }
+    `;
+
+  const cars = await client.fetch<Car[]>(query);
+  const slugRoutes = cars.map((car) => car._id);
+
+  return slugRoutes.map((slug) => ({
+    slug,
+  }));
 }
 
 async function fetchCar(slug: string) {
