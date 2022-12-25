@@ -72,6 +72,16 @@ const car = defineType({
   title: "Carros",
   fields: [
     defineField({
+      name: "photos",
+      type: "array",
+      title: "Fotos",
+      of: [{ type: "image" }],
+      options: {
+        layout: "grid",
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "title",
       type: "string",
       title: "Título",
@@ -92,15 +102,20 @@ const car = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "photos",
-      type: "array",
-      title: "Fotos",
-      of: [{ type: "image" }],
-      options: {
-        layout: "grid",
-      },
+      name: "enginePower",
+      type: "string",
+      title: "Cilindrada",
+      description: "ex: 1.5 TDI",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "horsePower",
+      type: "string",
+      title: "Potência",
+      description: "ex: 105cv",
+      validation: (Rule) => Rule.required(),
+    }),
+
     defineField({
       name: "year",
       type: "number",
@@ -133,13 +148,13 @@ const car = defineType({
       name: "doors",
       type: "number",
       title: "Portas",
-      validation: (Rule) => Rule.required().min(1).max(10),
+      validation: (Rule) => Rule.min(1).max(10),
     }),
     defineField({
       name: "seats",
       type: "number",
-      title: "Lugares",
-      validation: (Rule) => Rule.min(1).max(20),
+      title: "Lotação",
+      validation: (Rule) => Rule.min(1).max(40),
     }),
     defineField({
       title: "Combustível",

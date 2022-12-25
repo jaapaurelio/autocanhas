@@ -7,7 +7,7 @@ import { Content } from "./Content";
 
 const menuOptions = [
   { href: "/", title: "Início" },
-  { href: "/", title: "Viaturas" },
+  { href: "/viaturas", title: "Viaturas" },
   { href: "/oficina", title: "Oficina" },
   { href: "/", title: "Contacto" },
 ];

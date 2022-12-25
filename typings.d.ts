@@ -12,8 +12,10 @@ interface Referece {
 
 interface Image {
   _type: "image";
-  asset: Referece;
+  asset: ImageAsset;
 }
+
+interface ImageAsset extends SanityBody {}
 
 export interface Car extends SanityBody {
   _type: "car";

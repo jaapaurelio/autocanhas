@@ -4,8 +4,6 @@ import heroImage from "../../public/images/hero-image.jpg";
 import roadImage from "../../public/images/road.jpg";
 import { groq } from "next-sanity";
 import { Car } from "../../typings";
-import urlFor from "../../lib/urlFor";
-import { formatEuro, formatNumber } from "../../lib/format";
 import { Content } from "../../components/Content";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,7 +17,9 @@ import {
   faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { Button } from "../../components";
+import { Button } from "../../components/Button";
+import CarItem from "../../components/CarItem";
+import TotalCars from "../../components/TotalCars";
 
 async function fetchData() {
   const query = groq` {
@@ -95,45 +95,13 @@ export default async function Page() {
       </div>
       <Content className="my-20">
         <div className="flex justify-between items-center my-14">
-          <div className="text-4xl">
-            Bem vindo ao <span className="text-primary">Auto Canhas</span>
-          </div>
-          <div className="font-bold text-right">
-            <FontAwesomeIcon className="px-2 text-primary" icon={faCar} />
-            {totalCars} viaturas disponíveis
-          </div>
+          <div className="text-4xl">As mais recentes</div>
+          <TotalCars total={totalCars}></TotalCars>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {cars.map((car) => {
-            return (
-              <div
-                key={car._id}
-                className="shadow rounded overflow-hidden group cursor-pointer"
-              >
-                <Link href={`/veiculos/${car._id}`}>
-                  <div className="relative h-60 max-w-full group-hover:scale-105 transition-transform duration-200 ease-out">
-                    <Image
-                      src={urlFor(car.photos[0]).url()}
-                      fill
-                      alt={car.title}
-                      className="object-cover"
-                    ></Image>
-                  </div>
-                  <div className="p-6 flex flex-col justify-between">
-                    <div className="grow">
-                      <div className="text-lg font-bold">{car.title}</div>
-                      <div>
-                        {car.year} &#x2022; {formatNumber(car.km)} km &#x2022;{" "}
-                        {car.fuel}
-                      </div>
-                    </div>
-                    <div className="text-primary font-bold">
-                      {formatEuro(car.price)}
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            );
+            return <CarItem key={car._id} car={car}></CarItem>;
           })}
         </div>
         <div className="my-14 text-right">
