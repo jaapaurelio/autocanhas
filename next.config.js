@@ -3,5 +3,8 @@ module.exports = {
   transpilePackages: ["ui"],
   experimental: {
     appDir: true
+  },
+  images: {
+    domains: ["cdn.sanity.io"]
   }
 };

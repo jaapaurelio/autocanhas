@@ -72,7 +72,7 @@ const car = defineType({
   title: "Carros",
   fields: [
     defineField({
-      name: "name",
+      name: "title",
       type: "string",
       title: "Título",
       description: "ex: Renault Megane 1.5 DCI 84cv 2020",
