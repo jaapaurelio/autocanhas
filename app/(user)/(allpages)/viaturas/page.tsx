@@ -5,6 +5,7 @@ import TotalCars from "components/TotalCars";
 import client from "lib/sanityClient";
 import { Car } from "typings";
 import H1 from "components/H1";
+import CarsFilter from "components/CarsFilter";
 
 async function fetchCars() {
   const query = groq` {
@@ -27,18 +28,22 @@ export default async function Viaturas() {
   return (
     <div>
       <Content>
-        <div className="flex justify-between items-center">
-          <H1 gutterBottom gutterTop>
-            As nossas viaturas
-          </H1>
+        <div className="flex justify-between items-center mt-14 mb-8">
+          <H1>As nossas viaturas</H1>
           <div className="text-right">
             <TotalCars total={totalCars}></TotalCars>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {cars.map((car) => {
-            return <CarItem key={car._id} car={car}></CarItem>;
-          })}
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="mb-8 md:w-1/4">
+            {/* @ts-expect-error Server Component */}
+            <CarsFilter />
+          </div>
+          <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {cars.map((car) => {
+              return <CarItem key={car._id} car={car}></CarItem>;
+            })}
+          </div>
         </div>
       </Content>
     </div>

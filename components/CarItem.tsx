@@ -27,7 +27,7 @@ export default function CarItem({ car }: Props) {
         </div>
         <div className="p-6 flex flex-col justify-between">
           <div className="grow">
-            <div className="text-lg font-bold">{car.title}</div>
+            <div className="text-lg font-bold text-ellipsis">{car.title}</div>
             <div>
               {car.year} &#x2022; {formatNumber(car.km)} km &#x2022; {car.fuel}
             </div>

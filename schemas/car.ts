@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 
-const fuel = [
+const fuels = [
   "Diesel",
   "Eléctrico",
   "Gasolina",
@@ -141,7 +141,7 @@ const car = defineType({
       name: "transmission",
       type: "string",
       options: {
-        list: ["Manual", "Automática", "Semi-Automática"],
+        list: ["Manual", "Automática"],
       },
       validation: (Rule) => Rule.required(),
     }),
@@ -162,7 +162,7 @@ const car = defineType({
       name: "fuel",
       type: "string",
       options: {
-        list: fuel,
+        list: fuels,
       },
       validation: (Rule) => Rule.required(),
     }),
