@@ -150,7 +150,7 @@ export default async function Viatura({ params: { slug } }: Props) {
     };
   });
   return (
-    <Content className="my-20">
+    <Content className="my-10">
       <div>
         <h1 className="text-5xl font-bold mb-2">{car.title}</h1>
         <div>

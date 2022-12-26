@@ -89,11 +89,13 @@ export default async function Page() {
 
   return (
     <div>
-      <div className="relative -mt-20 sm:-mt-32 lg:-mt-40 -z-10">
+      <div className="relative -mt-20 sm:-mt-32 lg:-mt-40 -z-10 min-h-[50vh] md:min-h-[80vh]">
         <Image
           src={heroImage}
           alt="Auto Canhas Stand Automóvel"
           placeholder="blur"
+          fill
+          className="object-cover"
         ></Image>
       </div>
       <Content className="my-8 md:my-14">
