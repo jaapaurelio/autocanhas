@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import classnames from "classnames";
 import { Content } from "./Content";
+import logo from "public/images/logo.png";
+import logow from "public/images/logo-w.png";
 
 const menuOptions = [
   { href: "/", title: "Início" },
@@ -43,7 +45,7 @@ export const Header = ({ hero }: Props) => {
         <Link href="/">
           <div className="grow-0 shrink-0 w-40 md:w-auto">
             <Image
-              src={hero ? "/images/logo-w.png" : "/images/logo.png"}
+              src={hero ? logow : logo}
               alt="Auto Canhas"
               width="200"
               height="100"
@@ -57,8 +59,11 @@ export const Header = ({ hero }: Props) => {
                 key={option.title}
                 href={option.href}
                 className={classnames(
-                  "p-4 uppercase border-b-2 border-transparent hover:border-white transition-colors",
-                  { "text-gray-700": !hero, "text-white": hero }
+                  "p-4 uppercase border-b-2 border-transparent hover:border-primary transition-colors",
+                  {
+                    "text-gray-700": !hero,
+                    "text-white": hero,
+                  }
                 )}
               >
                 {option.title}

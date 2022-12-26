@@ -90,7 +90,11 @@ export default async function Page() {
   return (
     <div>
       <div className="relative -mt-20 sm:-mt-32 lg:-mt-40 -z-10">
-        <Image src={heroImage} alt="Auto Canhas Stand Automóvel"></Image>
+        <Image
+          src={heroImage}
+          alt="Auto Canhas Stand Automóvel"
+          placeholder="blur"
+        ></Image>
       </div>
       <Content className="my-20">
         <div className="flex justify-between items-center my-14">
