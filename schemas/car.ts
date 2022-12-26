@@ -45,7 +45,6 @@ const extras = [
   "Desembaciador de pára-brisas",
   "Cruise Control",
   "Cruise Control adaptativo",
-  "Cruise Control adaptativo",
   "Faróis Bi-Xenon",
   "Faróis laser",
   "Faróis Xenon",
@@ -72,6 +71,20 @@ const car = defineType({
   title: "Carros",
   fields: [
     defineField({
+      name: "title",
+      type: "string",
+      title: "Título",
+      description: "ex: Renault Megane 1.5 DCI 84cv 2020",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "price",
+      type: "number",
+      title: "Preço €",
+      description: "Para mostrar 'Sob Consulta' colocar um zero.",
+      validation: (Rule) => Rule.required().min(0),
+    }),
+    defineField({
       name: "photos",
       type: "array",
       title: "Fotos",
@@ -81,13 +94,7 @@ const car = defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: "title",
-      type: "string",
-      title: "Título",
-      description: "ex: Renault Megane 1.5 DCI 84cv 2020",
-      validation: (Rule) => Rule.required(),
-    }),
+
     defineField({
       name: "brand",
       type: "reference",
@@ -123,12 +130,6 @@ const car = defineType({
       validation: (Rule) => Rule.required().min(1900).max(2024),
     }),
     defineField({
-      name: "price",
-      type: "number",
-      title: "Preço €",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: "km",
       type: "number",
       title: "Quilómetros (km)",
@@ -140,7 +141,7 @@ const car = defineType({
       name: "transmission",
       type: "string",
       options: {
-        list: ["Manual", "Automática"],
+        list: ["Manual", "Automática", "Semi-Automática"],
       },
       validation: (Rule) => Rule.required(),
     }),
