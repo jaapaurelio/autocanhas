@@ -35,7 +35,7 @@ export interface Car extends SanityBody {
   transmission: string;
   brand: Brand;
   horsePower: string;
-  extras: string[];
+  extras?: string[];
   enginePower: string;
-  info: string;
+  info?: string;
 }

@@ -80,7 +80,6 @@ function ItemContainer({ children }: ItemProps) {
 
 export default async function Viatura({ params: { slug } }: Props) {
   const car = await fetchCar(slug);
-  console.log(car);
   const carInfo = [
     {
       label: "Marca",
@@ -187,43 +186,47 @@ export default async function Viatura({ params: { slug } }: Props) {
             </div>
           </div>
 
-          <div className="my-10">
-            <div className="text-lg font-bold my-5">Extras da viatura</div>
-            <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-              {car.extras.map((extra) => {
-                return (
-                  <div key={extra} className="flex items-center">
-                    <FontAwesomeIcon
-                      className="pr-2 text-primary"
-                      icon={faCheck}
-                    />
-                    {extra}
-                  </div>
-                );
-              })}
+          {!!car.extras?.length && (
+            <div className="my-10">
+              <div className="text-lg font-bold my-5">Extras da viatura</div>
+              <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                {car.extras?.map((extra) => {
+                  return (
+                    <div key={extra} className="flex items-center">
+                      <FontAwesomeIcon
+                        className="pr-2 text-primary"
+                        icon={faCheck}
+                      />
+                      {extra}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="my-10">
-            <div className="text-lg font-bold my-5">Informação adicional</div>
-            <div>
-              {car.info.split("\n").map((item, key) => {
-                return (
-                  <span key={key}>
-                    {item}
-                    <br />
-                  </span>
-                );
-              })}
+          {car.info && (
+            <div className="my-10">
+              <div className="text-lg font-bold my-5">Informação adicional</div>
+              <div>
+                {car.info?.split("\n").map((item, key) => {
+                  return (
+                    <span key={key}>
+                      {item}
+                      <br />
+                    </span>
+                  );
+                })}
+              </div>
+              <div>
+                <p>Possibilidade de Financiamento em Até 120 Meses; </p>
+                <p>
+                  A Informação disponibilizada não dispensa a sua confirmação
+                  nem poderá ser considerada vinculativa;
+                </p>
+              </div>
             </div>
-            <div>
-              <p>Possibilidade de Financiamento em Até 120 Meses; </p>
-              <p>
-                A Informação disponibilizada não dispensa a sua confirmação nem
-                poderá ser considerada vinculativa;
-              </p>
-            </div>
-          </div>
+          )}
         </div>
         <div className="lg:w-1/4">
           <CarContact />
