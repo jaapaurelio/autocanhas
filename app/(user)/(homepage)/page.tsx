@@ -19,6 +19,7 @@ import Link from "next/link";
 import { Button } from "components/Button";
 import CarItem from "components/CarItem";
 import TotalCars from "components/TotalCars";
+import H1 from "components/H1";
 
 async function fetchData() {
   const query = groq` {
@@ -98,9 +99,11 @@ export default async function Page() {
           className="object-cover"
         ></Image>
       </div>
-      <Content className="my-8 md:my-14">
-        <div className="flex justify-between items-center my-8">
-          <div className="text-xl md:text-3xl">As mais recentes</div>
+      <Content>
+        <div className="flex justify-between items-center">
+          <H1 gutterTop gutterBottom>
+            As mais recentes
+          </H1>
           <TotalCars total={totalCars}></TotalCars>
         </div>
 

@@ -21,6 +21,9 @@ import {
   faVanShuttle,
   faCheck,
 } from "@fortawesome/free-solid-svg-icons";
+import H1 from "components/H1";
+import H2 from "components/H2";
+import CheckItem from "components/CheckItem";
 
 export const revalidate = 60;
 
@@ -153,11 +156,13 @@ export default async function Viatura({ params: { slug } }: Props) {
   return (
     <Content className="my-10">
       <div>
-        <h1 className="text-5xl font-bold mb-2">{car.title}</h1>
-        <div>
+        <H1 big gutterTop>
+          {car.title}
+        </H1>
+        <div className="my-2">
           Ano {car.year} &#x2022; {formatNumber(car.km)} km &#x2022; {car.fuel}{" "}
         </div>
-        <div className="text-primary font-bold text-4xl mt-2">
+        <div className="text-primary font-bold text-4xl">
           {formatEuro(car.price)}
         </div>
       </div>
@@ -167,7 +172,7 @@ export default async function Viatura({ params: { slug } }: Props) {
             <ImageGallery showIndex showPlayButton={false} items={images} />
           </div>
           <div className="my-10">
-            <div className="text-lg font-bold my-5">Detalhes da viatura</div>
+            <H2 gutterTop>Detalhes da viatura</H2>
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
               {carInfo.map((info) => {
                 if (!info.value) {
@@ -189,18 +194,11 @@ export default async function Viatura({ params: { slug } }: Props) {
 
           {!!car.extras?.length && (
             <div className="my-10">
-              <div className="text-lg font-bold my-5">Extras da viatura</div>
+              <H2 gutterTop>Extras da viatura</H2>
+
               <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                 {car.extras?.map((extra) => {
-                  return (
-                    <div key={extra} className="flex items-center">
-                      <FontAwesomeIcon
-                        className="pr-2 text-primary"
-                        icon={faCheck}
-                      />
-                      {extra}
-                    </div>
-                  );
+                  return <CheckItem key={extra}>{extra}</CheckItem>;
                 })}
               </div>
             </div>
@@ -208,7 +206,7 @@ export default async function Viatura({ params: { slug } }: Props) {
 
           {car.info && (
             <div className="my-10">
-              <div className="text-lg font-bold my-5">Informação adicional</div>
+              <H2 gutterTop>Informação adicional</H2>
               <div>
                 {car.info?.split("\n").map((item, key) => {
                   return (
@@ -230,7 +228,7 @@ export default async function Viatura({ params: { slug } }: Props) {
           )}
         </div>
         <div className="lg:w-1/4">
-          <CarContact />
+          <CarContact showHeader />
         </div>
       </div>
     </Content>

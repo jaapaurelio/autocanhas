@@ -5,35 +5,44 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function CarContact() {
+interface Props {
+  showHeader?: boolean;
+}
+export default function CarContact({ showHeader }: Props) {
   return (
-    <div className="border p-3">
-      <div className="mb-3 font-bold flex justify-between items-center">
-        Contacto
+    <div className="border p-3 bg-white">
+      {showHeader && (
         <div>
-          <FontAwesomeIcon className="px-2 text-primary" icon={faMessage} />
-        </div>
-      </div>
-      <div className="text-gray-500 my-5 text-sm">
-        <p>Interessado? Dúvidas?</p>
-        <p>Entre em contacto e nós ajudamos.</p>
-      </div>
+          <div className="mb-3 font-bold flex justify-between items-center">
+            Contato
+            <div>
+              <FontAwesomeIcon className="px-2 text-primary" icon={faMessage} />
+            </div>
+          </div>
+          <div className="text-gray-500 my-5 text-sm">
+            <p>Interessado? Dúvidas?</p>
+            <p>Entre em contato e nós ajudamos.</p>
+          </div>
 
-      <div className="my-5">
-        <div>
-          <FontAwesomeIcon className="px-2 text-primary " icon={faPhone} />
-          <span>+351 291 976 381</span>
-        </div>
-        <div>
-          <FontAwesomeIcon className="px-2 text-primary" icon={faEnvelope} />
-          <span>geral@autocanhas.com.pt</span>
-        </div>
-      </div>
+          <div className="my-5">
+            <div>
+              <FontAwesomeIcon className="px-2 text-primary " icon={faPhone} />
+              <span>+351 291 976 381</span>
+            </div>
+            <div>
+              <FontAwesomeIcon
+                className="px-2 text-primary"
+                icon={faEnvelope}
+              />
+              <span>geral@autocanhas.com.pt</span>
+            </div>
+          </div>
 
-      <div className="text-gray-500 my-5 text-sm">
-        <p>Ou envie uma mensagem:</p>
-      </div>
-
+          <div className="text-gray-500 my-5 text-sm">
+            <p>Ou envie uma mensagem:</p>
+          </div>
+        </div>
+      )}
       <form>
         <div className="mb-6">
           <label

@@ -4,6 +4,7 @@ import { Content } from "components/Content";
 import TotalCars from "components/TotalCars";
 import client from "lib/sanityClient";
 import { Car } from "typings";
+import H1 from "components/H1";
 
 async function fetchCars() {
   const query = groq` {
@@ -27,7 +28,9 @@ export default async function Viaturas() {
     <div>
       <Content>
         <div className="flex justify-between items-center">
-          <h1 className="my-8 text-2xl">As nossas viaturas</h1>
+          <H1 gutterBottom gutterTop>
+            As nossas viaturas
+          </H1>
           <div className="text-right">
             <TotalCars total={totalCars}></TotalCars>
           </div>

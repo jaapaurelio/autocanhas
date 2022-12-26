@@ -11,7 +11,7 @@ const menuOptions = [
   { href: "/", title: "Início" },
   { href: "/viaturas", title: "Viaturas" },
   { href: "/oficina", title: "Oficina" },
-  { href: "/", title: "Contacto" },
+  { href: "/contato", title: "Contato" },
 ];
 interface Props {
   hero?: boolean;

@@ -52,7 +52,7 @@ export const Footer = () => {
     <div className="bg-stone-800 text-white py-20 mt-20">
       <Content className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Title>Contacto stand</Title>
+          <Title>Contato stand</Title>
           <InfoRow label="Telefone:" info="291 976 381" />
           <InfoRow label="Móvel 1:" info="965 582 960" />
           <InfoRow label="Móvel 2:" info="919 912 837" />
