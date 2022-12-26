@@ -1,7 +1,5 @@
 import React from "react";
 
-import "../globals.css";
-
 // Layout is a Server Component by default
 interface Props {
   children: React.ReactNode;
