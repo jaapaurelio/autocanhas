@@ -27,7 +27,7 @@ export default async function Viaturas() {
     <div>
       <Content>
         <div className="flex justify-between items-center">
-          <h1 className="my-14 text-2xl">As nossas viaturas</h1>
+          <h1 className="my-8 text-2xl">As nossas viaturas</h1>
           <div className="text-right">
             <TotalCars total={totalCars}></TotalCars>
           </div>

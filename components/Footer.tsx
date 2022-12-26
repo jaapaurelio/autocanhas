@@ -49,7 +49,7 @@ const Icon = ({ children }: IconProps) => {
 
 export const Footer = () => {
   return (
-    <div className="bg-stone-800 text-white p-20 mt-20">
+    <div className="bg-stone-800 text-white py-20 mt-20">
       <Content className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Title>Contacto stand</Title>

@@ -96,9 +96,9 @@ export default async function Page() {
           placeholder="blur"
         ></Image>
       </div>
-      <Content className="my-20">
-        <div className="flex justify-between items-center my-14">
-          <div className="text-3xl">As mais recentes</div>
+      <Content className="my-8 md:my-14">
+        <div className="flex justify-between items-center my-8">
+          <div className="text-xl md:text-3xl">As mais recentes</div>
           <TotalCars total={totalCars}></TotalCars>
         </div>
 
@@ -107,7 +107,7 @@ export default async function Page() {
             return <CarItem key={car._id} car={car}></CarItem>;
           })}
         </div>
-        <div className="my-14 text-right">
+        <div className="my-8 text-right">
           <Link href={"/viaturas"}>
             <Button>
               Ver todas as viaturas{" "}
