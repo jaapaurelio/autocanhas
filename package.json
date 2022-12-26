@@ -29,6 +29,7 @@
     "react-image-gallery": "^1.2.11",
     "react-is": "^18.2.0",
     "sanity": "^3.1.2",
+    "slugify": "^1.6.5",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

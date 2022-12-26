@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { formatEuro, formatNumber } from "../lib/format";
-import urlFor from "../lib/urlFor";
+import { slugForCar, urlForImage } from "../lib/urlUtils";
 import { Car } from "../typings";
 
 interface Props {
@@ -9,18 +9,20 @@ interface Props {
 }
 
 export default function CarItem({ car }: Props) {
+  const carSlug = slugForCar({ id: car._id, title: car.title });
+  const carImageUrl = urlForImage(car.photos[0]).url();
   return (
     <div
       key={car._id}
       className="shadow rounded overflow-hidden group cursor-pointer"
     >
-      <Link href={`/viaturas/${car._id}`}>
+      <Link href={`/viaturas/${carSlug}`}>
         <div className="relative h-60 max-w-full group-hover:scale-105 transition-transform duration-200 ease-out">
           <Image
-            src={urlFor(car.photos[0]).url()}
-            fill
+            src={carImageUrl}
             alt={car.title}
             className="object-cover"
+            fill
           ></Image>
         </div>
         <div className="p-6 flex flex-col justify-between">

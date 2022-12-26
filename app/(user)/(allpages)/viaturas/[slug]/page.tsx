@@ -5,7 +5,7 @@ import { Content } from "components/Content";
 import ImageGallery from "components/ImageGallery";
 import { formatEuro, formatNumber } from "lib/format";
 import client from "lib/sanityClient";
-import urlFor from "lib/urlFor";
+import { idFromCarSlug, slugForCar, urlForImage } from "lib/urlUtils";
 import { Car } from "typings";
 import {
   faCalendar,
@@ -33,21 +33,22 @@ interface Props {
 export async function generateStaticParams() {
   const query = groq`
         *[_type=='car']{
-            _id
+            _id,
+            title
         }
     `;
 
   const cars = await client.fetch<Car[]>(query);
-  const slugRoutes = cars.map((car) => car._id);
 
-  return slugRoutes.map((slug) => ({
-    slug,
+  return cars.map((car) => ({
+    slug: slugForCar({ title: car.title, id: car._id }),
   }));
 }
 
 async function fetchCar(slug: string) {
+  const id = idFromCarSlug(slug);
   const query = groq` 
-    *[_type == "car" && _id == $slug][0]{
+    *[_type == "car" && _id == $id][0]{
         ...,
         brand->,
         photos[]{
@@ -56,7 +57,7 @@ async function fetchCar(slug: string) {
         }
     }`;
 
-  return await client.fetch<Car>(query, { slug });
+  return await client.fetch<Car>(query, { id });
 }
 interface ItemProps {
   children: React.ReactNode;
@@ -145,8 +146,8 @@ export default async function Viatura({ params: { slug } }: Props) {
   ];
   const images = car.photos.map((photo) => {
     return {
-      original: urlFor(photo).height(600).url(),
-      thumbnail: urlFor(photo).size(200, 200).url(),
+      original: urlForImage(photo).height(600).url(),
+      thumbnail: urlForImage(photo).size(200, 200).url(),
     };
   });
   return (
