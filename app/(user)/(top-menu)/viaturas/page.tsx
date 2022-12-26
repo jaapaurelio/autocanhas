@@ -1,9 +1,9 @@
 import { groq } from "next-sanity";
-import CarItem from "../../../components/CarItem";
-import { Content } from "../../../components/Content";
-import TotalCars from "../../../components/TotalCars";
-import client from "../../../lib/sanityClient";
-import { Car } from "../../../typings";
+import CarItem from "components/CarItem";
+import { Content } from "components/Content";
+import TotalCars from "components/TotalCars";
+import client from "lib/sanityClient";
+import { Car } from "typings";
 
 async function fetchCars() {
   const query = groq` {

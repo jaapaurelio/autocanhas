@@ -1,13 +1,12 @@
 import Image from "next/image";
-import client from "../../lib/sanityClient";
-import heroImage from "../../public/images/hero-image.jpg";
-import roadImage from "../../public/images/road.jpg";
+import client from "lib/sanityClient";
+import heroImage from "public/images/hero-image.jpg";
+import roadImage from "public/images/road.jpg";
 import { groq } from "next-sanity";
-import { Car } from "../../typings";
-import { Content } from "../../components/Content";
+import { Car } from "typings";
+import { Content } from "components/Content";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCar,
   faCarOn,
   faArrowRight,
   faDollarSign,
@@ -17,9 +16,9 @@ import {
   faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { Button } from "../../components/Button";
-import CarItem from "../../components/CarItem";
-import TotalCars from "../../components/TotalCars";
+import { Button } from "components/Button";
+import CarItem from "components/CarItem";
+import TotalCars from "components/TotalCars";
 
 async function fetchData() {
   const query = groq` {
@@ -90,12 +89,12 @@ export default async function Page() {
 
   return (
     <div>
-      <div className="relative">
-        <Image src={heroImage} alt="Auto Canhas"></Image>
+      <div className="relative -mt-20 sm:-mt-32 lg:-mt-40 -z-10">
+        <Image src={heroImage} alt="Auto Canhas Stand Automóvel"></Image>
       </div>
       <Content className="my-20">
         <div className="flex justify-between items-center my-14">
-          <div className="text-4xl">As mais recentes</div>
+          <div className="text-3xl">As mais recentes</div>
           <TotalCars total={totalCars}></TotalCars>
         </div>
 

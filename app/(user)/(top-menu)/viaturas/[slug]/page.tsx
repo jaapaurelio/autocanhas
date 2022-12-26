@@ -1,12 +1,12 @@
 import { groq } from "next-sanity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CarContact from "../../../../components/CarContact";
-import { Content } from "../../../../components/Content";
-import ImageGallery from "../../../../components/ImageGallery";
-import { formatEuro, formatNumber } from "../../../../lib/format";
-import client from "../../../../lib/sanityClient";
-import urlFor from "../../../../lib/urlFor";
-import { Car } from "../../../../typings";
+import CarContact from "components/CarContact";
+import { Content } from "components/Content";
+import ImageGallery from "components/ImageGallery";
+import { formatEuro, formatNumber } from "lib/format";
+import client from "lib/sanityClient";
+import urlFor from "lib/urlFor";
+import { Car } from "typings";
 import {
   faCalendar,
   faCar,

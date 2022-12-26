@@ -11,11 +11,24 @@ const menuOptions = [
   { href: "/oficina", title: "Oficina" },
   { href: "/", title: "Contacto" },
 ];
-export const Header = () => {
+interface Props {
+  hero?: boolean;
+}
+export const Header = ({ hero }: Props) => {
   return (
     <section>
-      <div className="bg-primary">
-        <Content className="py-2 flex items-center justify-end text-primaryConstrast flex-col sm:flex-row">
+      <div
+        className={classnames("z-20 hidden md:block", {
+          "bg-primary": !hero,
+          "opacity-0": hero,
+        })}
+      >
+        <Content
+          className={classnames(
+            "py-2 flex items-center justify-end flex-col sm:flex-row text-sm",
+            { "text-primaryConstrast": !hero, "text-white": hero }
+          )}
+        >
           <div>
             <FontAwesomeIcon className="px-2 text-white" icon={faPhone} />
             <span>+351 291 976 381</span>
@@ -26,15 +39,17 @@ export const Header = () => {
           </div>
         </Content>
       </div>
-      <Content className="flex justify-center items-center py-2">
-        <div className="grow-0 shrink-0">
-          <Image
-            src="/images/logo.png"
-            alt="Auto Canhas"
-            width="200"
-            height="100"
-          ></Image>
-        </div>
+      <Content className="z-20 flex justify-center items-center py-4">
+        <Link href="/">
+          <div className="grow-0 shrink-0 w-40 md:w-auto">
+            <Image
+              src={hero ? "/images/logo-w.png" : "/images/logo.png"}
+              alt="Auto Canhas"
+              width="200"
+              height="100"
+            ></Image>
+          </div>
+        </Link>
         <nav className="grow justify-end hidden md:flex">
           {menuOptions.map((option) => {
             return (
@@ -42,7 +57,8 @@ export const Header = () => {
                 key={option.title}
                 href={option.href}
                 className={classnames(
-                  "text-gray-700 p-4 uppercase border-b-2 border-transparent hover:border-white transition-colors"
+                  "p-4 uppercase border-b-2 border-transparent hover:border-white transition-colors",
+                  { "text-gray-700": !hero, "text-white": hero }
                 )}
               >
                 {option.title}
@@ -50,8 +66,11 @@ export const Header = () => {
             );
           })}
         </nav>
+        <nav className="text-white grow justify-end text-right md:hidden">
+          H
+        </nav>
       </Content>
-      <div className="border-b border-gray-300"></div>
+      {!hero && <div className="border-b border-gray-300"></div>}
     </section>
   );
 };

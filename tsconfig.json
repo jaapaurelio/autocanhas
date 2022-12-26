@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Next.js",
   "compilerOptions": {
+    "baseUrl": ".",
     "composite": false,
     "declaration": true,
     "declarationMap": true,
@@ -38,13 +39,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "../../packages/ui/Logo.tsx",
-    "../../packages/ui/Logo.tsx",
-    "../../packages/ui/page.tsx",
-    "../../packages/ui/page.tsx",
-    "../../packages/ui/SearchBar.tsx",
-    "../../packages/ui/SearchBar.tsx"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
