@@ -14,6 +14,7 @@ export default function CarItem({ car }: Props) {
     .format("webp")
     .width(600)
     .url();
+
   return (
     <div
       key={car.id}

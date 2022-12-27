@@ -32,6 +32,14 @@ interface Props {
   };
 }
 
+/**
+ * https://beta.nextjs.org/docs/api-reference/generate-static-params
+ *
+ * Define the list of route segment parameters that will be statically
+ * generated at build time instead of on-demand at request time.
+ *
+ * This creates a static page for every car.
+ */
 export async function generateStaticParams() {
   const query = groq`
         *[_type=='car']{
@@ -87,69 +95,67 @@ export default async function Viatura({ params: { slug } }: Props) {
     {
       label: "Marca",
       value: car.brand.name,
-      icon: <FontAwesomeIcon className="pr-2 text-primary" icon={faCar} />,
+      icon: faCar,
     },
     {
       label: "Modelo",
       value: car.model,
-      icon: <FontAwesomeIcon className="pr-2 text-primary" icon={faCarOn} />,
+      icon: faCarOn,
     },
 
     {
       label: "Combustivel",
       value: car.fuel,
-      icon: <FontAwesomeIcon className="pr-2 text-primary" icon={faGasPump} />,
+      icon: faGasPump,
     },
     {
       label: "Quilometros",
       value: car.km,
-      icon: <FontAwesomeIcon className="pr-2 text-primary" icon={faRoad} />,
+      icon: faRoad,
     },
 
     {
       label: "Caixa",
       value: car.transmission,
-      icon: <FontAwesomeIcon className="pr-2 text-primary" icon={faGear} />,
+      icon: faGear,
     },
     {
       label: "Ano",
       value: car.year,
-      icon: <FontAwesomeIcon className="pr-2 text-primary" icon={faCalendar} />,
+      icon: faCalendar,
     },
     {
       label: "Cilindrada",
       value: car.enginePower,
-      icon: <FontAwesomeIcon className="pr-2 text-primary" icon={faFire} />,
+      icon: faFire,
     },
     {
       label: "Potência",
       value: car.horsePower,
-      icon: (
-        <FontAwesomeIcon className="pr-2 text-primary" icon={faHorseHead} />
-      ),
+      icon: faHorseHead,
     },
     {
       label: "Lugares",
       value: car.seats,
-      icon: (
-        <FontAwesomeIcon className="pr-2 text-primary" icon={faVanShuttle} />
-      ),
+      icon: faVanShuttle,
     },
     {
       label: "Portas",
       value: car.doors,
-      icon: <FontAwesomeIcon className="pr-2 text-primary" icon={faCarSide} />,
+      icon: faCarSide,
     },
     {
       label: "Preço",
       value: formatEuro(car.price),
-      icon: <FontAwesomeIcon className="pr-2 text-primary" icon={faEuroSign} />,
+      icon: faEuroSign,
     },
   ];
+
   const images = car.photos.map((photo) => ({
     original: urlForImage(photo).width(900).format("webp").url(),
     thumbnail: urlForImage(photo).size(200, 200).format("webp").url(),
   }));
+
   return (
     <Content className="my-10">
       <div>
@@ -179,7 +185,10 @@ export default async function Viatura({ params: { slug } }: Props) {
                 return (
                   <ItemContainer key={info.label}>
                     <ItemLabel>
-                      {info.icon}
+                      <FontAwesomeIcon
+                        className="pr-2 text-primary"
+                        icon={info.icon}
+                      />
                       {info.label}
                     </ItemLabel>
                     <ItemValue>{info.value}</ItemValue>

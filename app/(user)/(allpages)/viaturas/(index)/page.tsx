@@ -90,8 +90,7 @@ async function fetchCars({
     params.year_max = Number(year_max);
   }
 
-  const query = groq`{
-       "cars": *[_type == "car" ${queryFilter}] {
+  const query = groq`*[_type == "car" ${queryFilter}] {
             ...,
             "id": _id,
             brand->,
@@ -99,15 +98,14 @@ async function fetchCars({
             ...,
             asset->
             }
-          },
-          "totalCars" : count(*[_type == "car"])
-        }`;
+          }
+        `;
 
-  return client.fetch<{ cars: Car[]; totalCars: number }>(query, params);
+  return client.fetch<Car[]>(query, params);
 }
 
 export default async function Page({ searchParams = {} }: Props) {
-  const { cars } = await fetchCars(searchParams);
+  const cars = await fetchCars(searchParams);
 
   return (
     <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
