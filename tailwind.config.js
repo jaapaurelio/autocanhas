@@ -17,7 +17,7 @@ module.exports = {
       colors: {
         primary: colors.red[600],
         secondary: colors.red[100],
-        primaryConstrast: colors.red[200]
+        primaryConstrast: colors.red[100]
       }
     }
   },

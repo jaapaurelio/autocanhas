@@ -30,7 +30,7 @@ interface InfoRowProps {
 function InfoRow({ label, info }: InfoRowProps) {
   return (
     <div className="text-sm">
-      <span className="text-stone-500 font-bold">{label}</span>{" "}
+      <span className="text-stone-400 font-bold">{label}</span>{" "}
       <span>{info}</span>
     </div>
   );
@@ -77,6 +77,7 @@ export default function Footer() {
           <div className="flex gap-3">
             <Link
               href="https://www.facebook.com/autocanhas.stand"
+              aria-label="Auto Canhas Facebook"
               target="_blank"
             >
               <Icon>
@@ -85,6 +86,7 @@ export default function Footer() {
             </Link>
             <Link
               href="https://www.instagram.com/autocanhasstand/"
+              aria-label="Auto Canhas Instagram"
               target="_blank"
             >
               <Icon>
@@ -94,7 +96,7 @@ export default function Footer() {
           </div>
         </div>
       </Content>
-      <Content className="mt-14 text-stone-500">
+      <Content className="mt-14 text-stone-400">
         <div className="">
           © Auto Canhas - A informação apresentada é para efeitos informativos.
         </div>

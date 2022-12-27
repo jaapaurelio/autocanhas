@@ -147,8 +147,8 @@ export default async function Viatura({ params: { slug } }: Props) {
     },
   ];
   const images = car.photos.map((photo) => ({
-    original: urlForImage(photo).height(600).url(),
-    thumbnail: urlForImage(photo).size(200, 200).url(),
+    original: urlForImage(photo).width(900).format("webp").url(),
+    thumbnail: urlForImage(photo).size(200, 200).format("webp").url(),
   }));
   return (
     <Content className="my-10">

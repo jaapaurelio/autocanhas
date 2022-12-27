@@ -10,7 +10,10 @@ interface Props {
 
 export default function CarItem({ car }: Props) {
   const carSlug = slugForCar({ id: car.id, title: car.title });
-  const carImageUrl = urlForImage(car.photos[0]).url();
+  const carImageUrl = urlForImage(car.photos[0])
+    .format("webp")
+    .width(600)
+    .url();
   return (
     <div
       key={car.id}
