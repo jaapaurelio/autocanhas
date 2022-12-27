@@ -115,12 +115,12 @@ export default async function CarsFilter() {
 
         <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2">
           <div>
-            <Label name="kms_min">Km desde</Label>
-            <DropDown name="kms_min" options={kmsOptions}></DropDown>
+            <Label name="km_min">Km desde</Label>
+            <DropDown name="km_min" options={kmsOptions}></DropDown>
           </div>
           <div>
-            <Label name="kms_max">Km até</Label>
-            <DropDown name="kms_max" options={kmsOptions}></DropDown>
+            <Label name="km_max">Km até</Label>
+            <DropDown name="km_max" options={kmsOptions}></DropDown>
           </div>
         </div>
 

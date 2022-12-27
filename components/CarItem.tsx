@@ -29,7 +29,8 @@ export default function CarItem({ car }: Props) {
           <div className="grow">
             <div className="text-lg font-bold text-ellipsis">{car.title}</div>
             <div>
-              {car.year} &#x2022; {formatNumber(car.km)} km &#x2022; {car.fuel}
+              {car.year} &#x2022; {formatNumber(car.km)} km &#x2022; {car.fuel}{" "}
+              &#x2022; {car.transmission}
             </div>
           </div>
           <div className="text-primary font-bold">{formatEuro(car.price)}</div>
