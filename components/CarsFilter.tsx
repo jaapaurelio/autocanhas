@@ -1,7 +1,7 @@
 import { formatEuro, formatNumber } from "lib/format";
 import client from "lib/sanityClient";
 import { groq } from "next-sanity";
-import ClientFilter from "./ClientFilter";
+import { DropDown } from "./ClientFilter";
 
 async function fetchFilters() {
   const query = groq` {
@@ -14,14 +14,6 @@ async function fetchFilters() {
   return await client.fetch<{ brands: { name: string; _id: string }[] }>(query);
 }
 
-interface Option {
-  label: string;
-  value: string;
-}
-interface Props {
-  options: Option[];
-  name: string;
-}
 interface LabelProps {
   children: React.ReactNode;
   name: string;
@@ -34,22 +26,6 @@ function Label({ children, name }: LabelProps) {
   );
 }
 
-function DropDown({ options, name }: Props) {
-  return (
-    <select
-      defaultValue=""
-      id={name}
-      className="bg-gray-50 arrow-select m-0 block w-full appearance-none rounded border border-solid border-gray-300  bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-gray-50 focus:text-gray-700 focus:outline-none"
-    >
-      <option></option>
-      {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  );
-}
 export default async function CarsFilter() {
   const { brands } = await fetchFilters();
 
@@ -110,19 +86,21 @@ export default async function CarsFilter() {
 
   return (
     <div className="shadow p-2">
-      <ClientFilter />
       <div className="grid grid-cols-1 md:grid-cols-1 gap-1 md:gap-4">
         <div>
           <Label name="brand">Marca</Label>
           <DropDown name="brand" options={brandsOptions}></DropDown>
         </div>
         <div>
-          <Label name="brand">Combustível</Label>
-          <DropDown name="brand" options={fuelOptions}></DropDown>
+          <Label name="fuel">Combustível</Label>
+          <DropDown name="fuel" options={fuelOptions}></DropDown>
         </div>
         <div>
-          <Label name="brand">Caixa</Label>
-          <DropDown name="brand" options={transmitionsOptions}></DropDown>
+          <Label name="transmission">Caixa</Label>
+          <DropDown
+            name="transmission"
+            options={transmitionsOptions}
+          ></DropDown>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2">
           <div>
@@ -137,12 +115,12 @@ export default async function CarsFilter() {
 
         <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2">
           <div>
-            <Label name="km_min">Km desde</Label>
-            <DropDown name="km_min" options={kmsOptions}></DropDown>
+            <Label name="kms_min">Km desde</Label>
+            <DropDown name="kms_min" options={kmsOptions}></DropDown>
           </div>
           <div>
-            <Label name="km_max">Km até</Label>
-            <DropDown name="km_max" options={kmsOptions}></DropDown>
+            <Label name="kms_max">Km até</Label>
+            <DropDown name="kms_max" options={kmsOptions}></DropDown>
           </div>
         </div>
 

@@ -6,7 +6,7 @@ import client from "lib/sanityClient";
 import { Car } from "typings";
 import H1 from "components/H1";
 import CarsFilter from "components/CarsFilter";
-import CarList from "components/CarList";
+import CarList, { CarListLoading } from "components/CarList";
 import { Suspense } from "react";
 import Loading from "./loading";
 
@@ -37,14 +37,10 @@ async function fetchCars({ brand }: SearchParamsProps) {
           "totalCars" : count(*[_type == "car"])
         }`;
 
-  console.log("query", query);
   return await client.fetch<{ cars: Car[]; totalCars: number }>(query, {});
 }
 export const revalidate = 0;
 export default async function Page({ searchParams = {} }: Props) {
-  console.log("searchParams", searchParams);
-  const { cars } = await fetchCars(searchParams);
-  console.log("a", searchParams);
   return (
     <div>
       <Content>
@@ -59,7 +55,7 @@ export default async function Page({ searchParams = {} }: Props) {
             {/* @ts-expect-error Server Component */}
             <CarsFilter />
           </div>
-          <Suspense fallback={<Loading />}>
+          <Suspense key={searchParams.brand} fallback={<CarListLoading />}>
             {/* @ts-expect-error Server Component */}
             <CarList searchParams={searchParams}></CarList>
           </Suspense>
