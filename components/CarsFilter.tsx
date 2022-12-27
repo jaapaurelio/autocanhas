@@ -1,6 +1,7 @@
 import { formatEuro, formatNumber } from "lib/format";
 import client from "lib/sanityClient";
 import { groq } from "next-sanity";
+import ClientFilter from "./ClientFilter";
 
 async function fetchFilters() {
   const query = groq` {
@@ -109,6 +110,7 @@ export default async function CarsFilter() {
 
   return (
     <div className="shadow p-2">
+      <ClientFilter />
       <div className="grid grid-cols-1 md:grid-cols-1 gap-1 md:gap-4">
         <div>
           <Label name="brand">Marca</Label>
