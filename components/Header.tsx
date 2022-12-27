@@ -3,9 +3,9 @@ import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
 import classnames from "classnames";
-import { Content } from "./Content";
 import logo from "public/images/logo.png";
 import logow from "public/images/logo-w.png";
+import Content from "./Content";
 
 const menuOptions = [
   { href: "/", title: "Início" },
@@ -16,7 +16,7 @@ const menuOptions = [
 interface Props {
   hero?: boolean;
 }
-export const Header = ({ hero }: Props) => {
+export default function Header({ hero }: Props) {
   return (
     <section>
       <div
@@ -49,33 +49,31 @@ export const Header = ({ hero }: Props) => {
               alt="Auto Canhas"
               width="200"
               height="100"
-            ></Image>
+            />
           </div>
         </Link>
         <nav className="grow justify-end hidden md:flex">
-          {menuOptions.map((option) => {
-            return (
-              <Link
-                key={option.title}
-                href={option.href}
-                className={classnames(
-                  "p-4 uppercase border-b-2 border-transparent hover:border-primary transition-colors",
-                  {
-                    "text-gray-700": !hero,
-                    "text-white": hero,
-                  }
-                )}
-              >
-                {option.title}
-              </Link>
-            );
-          })}
+          {menuOptions.map((option) => (
+            <Link
+              key={option.title}
+              href={option.href}
+              className={classnames(
+                "p-4 uppercase border-b-2 border-transparent hover:border-primary transition-colors",
+                {
+                  "text-gray-700": !hero,
+                  "text-white": hero,
+                }
+              )}
+            >
+              {option.title}
+            </Link>
+          ))}
         </nav>
         <nav className="text-white grow justify-end text-right md:hidden">
           H
         </nav>
       </Content>
-      {!hero && <div className="border-b border-gray-300"></div>}
+      {!hero && <div className="border-b border-gray-300" />}
     </section>
   );
-};
+}

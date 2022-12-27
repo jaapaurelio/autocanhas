@@ -14,12 +14,12 @@ interface Props {
   name: string;
 }
 
-export function DropDown({ options, name }: Props) {
+export default function DropDown({ options, name }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const parsed = queryString.parse(searchParams.toString());
-  const currentValue = (parsed[name] as string) || "";
+  const parsedN = queryString.parse(searchParams.toString());
+  const currentValue = (parsedN[name] as string) || "";
 
   const [value, setValue] = useState(currentValue);
 
@@ -39,7 +39,7 @@ export function DropDown({ options, name }: Props) {
       id={name}
       className="bg-gray-50 arrow-select m-0 block w-full appearance-none rounded border border-solid border-gray-300  bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-gray-50 focus:text-gray-700 focus:outline-none"
     >
-      <option></option>
+      <option value=""> </option>
       {options.map((option) => (
         <option key={option.value} value={option.value}>
           {option.label}

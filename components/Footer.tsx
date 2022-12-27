@@ -1,15 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import classnames from "classnames";
-import { Content } from "./Content";
 import Link from "next/link";
+import Content from "./Content";
 
 interface TitleProps {
   children: React.ReactNode;
   small?: boolean;
 }
 
-const Title = ({ children, small }: TitleProps) => {
+function Title({ children, small }: TitleProps) {
   return (
     <div
       className={classnames("uppercase font-bold mt-4", {
@@ -20,34 +20,34 @@ const Title = ({ children, small }: TitleProps) => {
       {children}
     </div>
   );
-};
+}
 
-interface InfoRow {
+interface InfoRowProps {
   label: string;
   info: string;
 }
 
-const InfoRow = ({ label, info }: InfoRow) => {
+function InfoRow({ label, info }: InfoRowProps) {
   return (
     <div className="text-sm">
       <span className="text-stone-500 font-bold">{label}</span>{" "}
       <span>{info}</span>
     </div>
   );
-};
+}
 
 interface IconProps {
   children: React.ReactNode;
 }
-const Icon = ({ children }: IconProps) => {
+function Icon({ children }: IconProps) {
   return (
     <div className="text-lg bg-stone-500 w-10 h-10 text-center leading-10 hover:bg-secondary cursor-pointer">
       {children}
     </div>
   );
-};
+}
 
-export const Footer = () => {
+export default function Footer() {
   return (
     <div className="bg-stone-800 text-white py-20 mt-20">
       <Content className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
@@ -80,7 +80,7 @@ export const Footer = () => {
               target="_blank"
             >
               <Icon>
-                <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faFacebookF} />
               </Icon>
             </Link>
             <Link
@@ -88,7 +88,7 @@ export const Footer = () => {
               target="_blank"
             >
               <Icon>
-                <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faInstagram} />
               </Icon>
             </Link>
           </div>
@@ -101,4 +101,4 @@ export const Footer = () => {
       </Content>
     </div>
   );
-};
+}

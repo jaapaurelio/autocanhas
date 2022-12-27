@@ -1,6 +1,6 @@
-import myConfiguredSanityClient from "./sanityClient";
 import imageUrlBuilder from "@sanity/image-url";
 import slugify from "slugify";
+import myConfiguredSanityClient from "./sanityClient";
 
 const slugIdentifier = "-vcl-";
 

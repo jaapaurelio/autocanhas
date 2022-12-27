@@ -26,7 +26,7 @@ async function fetchCars(pa: SearchParamsProps) {
           "totalCars" : count(*[_type == "car"])
         }`;
 
-  return await client.fetch<{ cars: Car[]; totalCars: number }>(query, {});
+  return client.fetch<{ cars: Car[]; totalCars: number }>(query, {});
 }
 
 interface Props {
@@ -38,9 +38,9 @@ export default async function CarList({ searchParams = {} }: Props) {
 
   return (
     <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-      {cars.map((car) => {
-        return <CarItem key={car._id} car={car}></CarItem>;
-      })}
+      {cars.map((car) => (
+        <CarItem key={car.id} car={car} />
+      ))}
     </div>
   );
 }
@@ -50,13 +50,11 @@ export function CarListLoading() {
 
   return (
     <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-      {items.map((v, i) => {
-        return (
-          <div key={i} className="shadow h-40 bg-slate-100">
-            <div></div>
-          </div>
-        );
-      })}
+      {items.map((v) => (
+        <div key={v} className="shadow h-40 bg-slate-100">
+          <div>&nbsp;</div>
+        </div>
+      ))}
     </div>
   );
 }

@@ -9,11 +9,11 @@ interface Props {
 }
 
 export default function CarItem({ car }: Props) {
-  const carSlug = slugForCar({ id: car._id, title: car.title });
+  const carSlug = slugForCar({ id: car.id, title: car.title });
   const carImageUrl = urlForImage(car.photos[0]).url();
   return (
     <div
-      key={car._id}
+      key={car.id}
       className="shadow rounded overflow-hidden group cursor-pointer"
     >
       <Link href={`/viaturas/${carSlug}`}>
@@ -23,7 +23,7 @@ export default function CarItem({ car }: Props) {
             alt={car.title}
             className="object-cover"
             fill
-          ></Image>
+          />
         </div>
         <div className="p-6 flex flex-col justify-between">
           <div className="grow">

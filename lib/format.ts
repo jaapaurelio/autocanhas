@@ -6,7 +6,7 @@ const formatEuroBuilder = new Intl.NumberFormat("pt-PT", {
 
 const formatNumberBuilder = new Intl.NumberFormat("pt-PT", {});
 
-export const formatEuro = function (price: number) {
+export const formatEuro = function formatEuro(price: number) {
   if (!price) {
     return "Sob Consulta";
   }

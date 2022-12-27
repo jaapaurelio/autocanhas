@@ -1,5 +1,5 @@
 import CheckItem from "components/CheckItem";
-import { Content } from "components/Content";
+import Content from "components/Content";
 import H1 from "components/H1";
 import H2 from "components/H2";
 import Image from "next/image";
@@ -47,9 +47,9 @@ export default async function Page() {
           </div>
           <H2 gutterTop>Os nossos serviços incluem</H2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            {services.map((service) => {
-              return <CheckItem key={service}>{service}</CheckItem>;
-            })}
+            {services.map((service) => (
+              <CheckItem key={service}>{service}</CheckItem>
+            ))}
           </div>
           <p className="mt-10">
             Ganhe tempo e marque a manutenção do seu carro connosco.
@@ -61,7 +61,7 @@ export default async function Page() {
             src={autoRepair1}
             alt="Estrada"
             fill
-          ></Image>
+          />
         </div>
       </Content>
       <div className="bg-slate-500 my-20 py-20 md:py-40 relative">
@@ -70,7 +70,7 @@ export default async function Page() {
           src={autoRepairParallax}
           alt="Estrada"
           fill
-        ></Image>
+        />
         <Content className="relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-white">
             {[
@@ -87,16 +87,14 @@ export default async function Page() {
                 label: "Sistema de velocidades",
               },
               { icon: "stm-icon-tire_wheel", label: "Pneus" },
-            ].map(({ label, icon, iconSize }) => {
-              return (
-                <div key={label} className="flex items-center">
-                  <div className="flex justify-center items-center w-16 h-16 text-4xl bg-red-700 leading-10 p-2 mr-6">
-                    <div className={`stm-icon ${icon} ${iconSize}`}></div>
-                  </div>
-                  <div className="font-bold">{label}</div>
+            ].map(({ label, icon, iconSize }) => (
+              <div key={label} className="flex items-center">
+                <div className="flex justify-center items-center w-16 h-16 text-4xl bg-red-700 leading-10 p-2 mr-6">
+                  <div className={`stm-icon ${icon} ${iconSize}`} />
                 </div>
-              );
-            })}
+                <div className="font-bold">{label}</div>
+              </div>
+            ))}
           </div>
         </Content>
       </div>
@@ -147,12 +145,13 @@ export default async function Page() {
           </div>
           <div className="md:w-2/3">
             <iframe
+              title="Auto Canhas Oficina"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13428.859979902569!2d-17.138336598873142!3d32.70691429912947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc60517960f4e81f%3A0x7783830323076cb0!2sAuto%20Canhas%20Oficina!5e0!3m2!1spt-PT!2spt!4v1672071484576!5m2!1spt-PT!2spt"
               width="100%"
               height="450"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+            />
           </div>
         </div>
       </Content>

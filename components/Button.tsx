@@ -1,8 +1,9 @@
 import * as React from "react";
+
 interface Props {
   children: React.ReactNode;
 }
-export const Button = ({ children }: Props) => {
+export default function Button({ children }: Props) {
   return (
     <button
       type="button"
@@ -11,4 +12,4 @@ export const Button = ({ children }: Props) => {
       {children}
     </button>
   );
-};
+}

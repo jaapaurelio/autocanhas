@@ -3,10 +3,10 @@ interface Props {
   className?: string;
 }
 
-export const Content = ({ children, className }: Props) => {
+export default function Content({ children, className }: Props) {
   return (
     <div className={`max-w-6xl mx-auto grow px-4 md:px-10 ${className}`}>
       {children}
     </div>
   );
-};
+}

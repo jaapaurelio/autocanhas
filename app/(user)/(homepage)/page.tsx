@@ -4,7 +4,7 @@ import heroImage from "public/images/hero-image.jpg";
 import roadImage from "public/images/road.jpg";
 import { groq } from "next-sanity";
 import { Car } from "typings";
-import { Content } from "components/Content";
+import Content from "components/Content";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCarOn,
@@ -16,7 +16,7 @@ import {
   faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { Button } from "components/Button";
+import Button from "components/Button";
 import CarItem from "components/CarItem";
 import TotalCars from "components/TotalCars";
 import H1 from "components/H1";
@@ -97,23 +97,23 @@ export default async function Page() {
           placeholder="blur"
           fill
           className="object-cover"
-        ></Image>
+        />
       </div>
       <Content>
         <div className="flex justify-between items-center">
           <H1 gutterTop gutterBottom>
             As mais recentes
           </H1>
-          <TotalCars total={totalCars}></TotalCars>
+          <TotalCars total={totalCars} />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {cars.map((car) => {
-            return <CarItem key={car._id} car={car}></CarItem>;
-          })}
+          {cars.map((car) => (
+            <CarItem key={car.id} car={car} />
+          ))}
         </div>
         <div className="my-8 text-right">
-          <Link href={"/viaturas"}>
+          <Link href="/viaturas">
             <Button>
               Ver todas as viaturas{" "}
               <FontAwesomeIcon
@@ -130,24 +130,22 @@ export default async function Page() {
           src={roadImage}
           alt="Estrada"
           fill
-        ></Image>
+        />
         <Content className="relative z-10">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
-            {textCards.map((text) => {
-              return (
-                <div
-                  key={text.title}
-                  className="bg-white flex gap-5 justify-center items-start p-6 rounded shadow"
-                >
-                  <div className="text-5xl text-center ">{text.icon}</div>
+            {textCards.map((text) => (
+              <div
+                key={text.title}
+                className="bg-white flex gap-5 justify-center items-start p-6 rounded shadow"
+              >
+                <div className="text-5xl text-center ">{text.icon}</div>
 
-                  <div className="">
-                    <div className="text-3xl mb-2">{text.title}</div>
-                    <div className="text-lg">{text.body}</div>
-                  </div>
+                <div className="">
+                  <div className="text-3xl mb-2">{text.title}</div>
+                  <div className="text-lg">{text.body}</div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </Content>
       </div>
@@ -156,17 +154,15 @@ export default async function Page() {
           Porquê escolher o auto canhas
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9">
-          {whyChooseUs.map((why) => {
-            return (
-              <div key={why.title} className="flex flex-row gap-3">
-                <div className="text-3xl">{why.icon}</div>
-                <div>
-                  <div className="font-bold mb-3">{why.title}</div>
-                  <div className="text-sm">{why.body}</div>
-                </div>
+          {whyChooseUs.map((why) => (
+            <div key={why.title} className="flex flex-row gap-3">
+              <div className="text-3xl">{why.icon}</div>
+              <div>
+                <div className="font-bold mb-3">{why.title}</div>
+                <div className="text-sm">{why.body}</div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </Content>
     </div>

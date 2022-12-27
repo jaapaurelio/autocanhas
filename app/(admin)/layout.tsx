@@ -6,7 +6,7 @@ interface Props {
 }
 export default function Layout({ children }: Props) {
   return (
-    <html>
+    <html lang="en">
       <body>
         <main>{children}</main>
       </body>

@@ -1,4 +1,4 @@
-import { Header } from "components/Header";
+import Header from "components/Header";
 
 // Layout is a Server Component by default
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 export default function Layout({ children }: Props) {
   return (
     <>
-      <Header hero></Header>
+      <Header hero />
       <main>{children}</main>
     </>
   );

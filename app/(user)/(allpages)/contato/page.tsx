@@ -5,10 +5,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CarContact from "components/CarContact";
-import { Content } from "components/Content";
+import Content from "components/Content";
 import H1 from "components/H1";
-import Image from "next/image";
-import contact from "public/images/contact.jpg";
 
 export default async function Page() {
   const years = new Date().getFullYear() - 1993 - 1;
@@ -35,7 +33,7 @@ export default async function Page() {
             </div>
           </div>
           <div className="md:w-1/3 flex flex-col mb-10">
-            <CarContact showHeader={false}></CarContact>
+            <CarContact showHeader={false} />
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-4 mt-20">
@@ -95,12 +93,13 @@ export default async function Page() {
           </div>
           <div className="md:w-2/3">
             <iframe
+              title="Auto Canhas no mapa"
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13429.18002091419!2d-17.11572997403564!3d32.70478782998149!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe8ce151eda8b6616!2sAuto%20Canhas%20-%20Loreto%20%26%20Nascimento%2C%20Unipessoal%20Lda!5e0!3m2!1sen!2spt!4v1672079021368!5m2!1sen!2spt"
               width="100%"
               height="450"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+            />
           </div>
         </div>
       </Content>

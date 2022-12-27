@@ -45,20 +45,22 @@ export default function CarContact({ showHeader }: Props) {
       )}
       <form>
         <div className="mb-6">
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label
-            htmlFor="password"
+            htmlFor="message"
             className="block mb-2 text-sm font-medium text-gray-900"
           >
             Mensagem
           </label>
           <textarea
-            id="password"
+            id="message"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 "
             required
             placeholder="A sua mensagem aqui."
           />
         </div>
         <div className="mb-6">
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label
             htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900"
@@ -73,14 +75,15 @@ export default function CarContact({ showHeader }: Props) {
           />
         </div>
         <div className="mb-6">
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label
-            htmlFor="Telefone"
+            htmlFor="phone"
             className="block mb-2 text-sm font-medium text-gray-900"
           >
             Telefone
           </label>
           <input
-            id="Telefone"
+            id="phone"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 "
             required
           />

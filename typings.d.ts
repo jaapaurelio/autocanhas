@@ -16,6 +16,7 @@ interface Image {
 }
 interface Brand extends SanityBody {
   _type: "car";
+  id: string;
   name: string;
 }
 
@@ -23,6 +24,7 @@ interface ImageAsset extends SanityBody {}
 
 export interface Car extends SanityBody {
   _type: "car";
+  id: string;
   title: string;
   model: string;
   photos: Image[];

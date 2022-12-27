@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CarContact from "components/CarContact";
-import { Content } from "components/Content";
+import Content from "components/Content";
 import ImageGallery from "components/ImageGallery";
 import { formatEuro, formatNumber } from "lib/format";
 import client from "lib/sanityClient";
@@ -35,15 +35,15 @@ interface Props {
 export async function generateStaticParams() {
   const query = groq`
         *[_type=='car']{
-            _id,
-            title
+          "id": _id,
+          title
         }
     `;
 
   const cars = await client.fetch<Car[]>(query);
 
   return cars.map((car) => ({
-    slug: slugForCar({ title: car.title, id: car._id }),
+    slug: slugForCar({ title: car.title, id: car.id }),
   }));
 }
 
@@ -59,7 +59,7 @@ async function fetchCar(slug: string) {
         }
     }`;
 
-  return await client.fetch<Car>(query, { id });
+  return client.fetch<Car>(query, { id });
 }
 interface ItemProps {
   children: React.ReactNode;
@@ -146,12 +146,10 @@ export default async function Viatura({ params: { slug } }: Props) {
       icon: <FontAwesomeIcon className="pr-2 text-primary" icon={faEuroSign} />,
     },
   ];
-  const images = car.photos.map((photo) => {
-    return {
-      original: urlForImage(photo).height(600).url(),
-      thumbnail: urlForImage(photo).size(200, 200).url(),
-    };
-  });
+  const images = car.photos.map((photo) => ({
+    original: urlForImage(photo).height(600).url(),
+    thumbnail: urlForImage(photo).size(200, 200).url(),
+  }));
   return (
     <Content className="my-10">
       <div>
@@ -175,7 +173,7 @@ export default async function Viatura({ params: { slug } }: Props) {
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
               {carInfo.map((info) => {
                 if (!info.value) {
-                  return;
+                  return null;
                 }
 
                 return (
@@ -196,9 +194,9 @@ export default async function Viatura({ params: { slug } }: Props) {
               <H2 gutterTop>Extras da viatura</H2>
 
               <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-                {car.extras?.map((extra) => {
-                  return <CheckItem key={extra}>{extra}</CheckItem>;
-                })}
+                {car.extras?.map((extra) => (
+                  <CheckItem key={extra}>{extra}</CheckItem>
+                ))}
               </div>
             </div>
           )}
@@ -207,14 +205,13 @@ export default async function Viatura({ params: { slug } }: Props) {
             <div className="my-10">
               <H2 gutterTop>Informação adicional</H2>
               <div>
-                {car.info?.split("\n").map((item, key) => {
-                  return (
-                    <span key={key}>
-                      {item}
-                      <br />
-                    </span>
-                  );
-                })}
+                {car.info?.split("\n").map((item, i) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <span key={i}>
+                    {item}
+                    <br />
+                  </span>
+                ))}
               </div>
               <div>
                 <p>Possibilidade de Financiamento em Até 120 Meses; </p>

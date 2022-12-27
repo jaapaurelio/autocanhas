@@ -1,19 +1,19 @@
 import { formatEuro, formatNumber } from "lib/format";
 import client from "lib/sanityClient";
 import { groq } from "next-sanity";
-import { DropDown } from "./ClientFilter";
+import DropDown from "./Dropdown";
 
 async function fetchFilters() {
   const query = groq`{
     "brands": *[_type == "brand"] | order(name) {
          name,
-         _id,
+         "id": _id,
          "count": count(*[_type == "car" && references(^._id)])
        },
      }`;
 
-  return await client.fetch<{
-    brands: { name: string; _id: string; count: number }[];
+  return client.fetch<{
+    brands: { name: string; id: string; count: number }[];
   }>(query);
 }
 
@@ -36,7 +36,7 @@ export default async function CarsFilter() {
     .filter((brand) => brand.count)
     .map((brand) => ({
       label: brand.name,
-      value: brand._id,
+      value: brand.id,
     }));
 
   const prices = [
@@ -94,49 +94,46 @@ export default async function CarsFilter() {
       <div className="grid grid-cols-1 md:grid-cols-1 gap-1 md:gap-4">
         <div>
           <Label name="brand">Marca</Label>
-          <DropDown name="brand" options={brandsOptions}></DropDown>
+          <DropDown name="brand" options={brandsOptions} />
         </div>
         <div>
           <Label name="fuel">Combustível</Label>
-          <DropDown name="fuel" options={fuelOptions}></DropDown>
+          <DropDown name="fuel" options={fuelOptions} />
         </div>
         <div>
           <Label name="transmission">Caixa</Label>
-          <DropDown
-            name="transmission"
-            options={transmitionsOptions}
-          ></DropDown>
+          <DropDown name="transmission" options={transmitionsOptions} />
         </div>
         <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2">
           <div>
             <Label name="price_min">Preço desde</Label>
-            <DropDown name="price_min" options={priceOptions}></DropDown>
+            <DropDown name="price_min" options={priceOptions} />
           </div>
           <div>
             <Label name="price_max">Preço até</Label>
-            <DropDown name="price_max" options={priceOptions}></DropDown>
+            <DropDown name="price_max" options={priceOptions} />
           </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2">
           <div>
             <Label name="km_min">Km desde</Label>
-            <DropDown name="km_min" options={kmsOptions}></DropDown>
+            <DropDown name="km_min" options={kmsOptions} />
           </div>
           <div>
             <Label name="km_max">Km até</Label>
-            <DropDown name="km_max" options={kmsOptions}></DropDown>
+            <DropDown name="km_max" options={kmsOptions} />
           </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2">
           <div>
             <Label name="year_min">Ano desde</Label>
-            <DropDown name="year_min" options={yearsOptions}></DropDown>
+            <DropDown name="year_min" options={yearsOptions} />
           </div>
           <div>
             <Label name="year_max">Ano até</Label>
-            <DropDown name="year_max" options={yearsOptions}></DropDown>
+            <DropDown name="year_max" options={yearsOptions} />
           </div>
         </div>
       </div>

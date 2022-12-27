@@ -93,6 +93,7 @@ async function fetchCars({
   const query = groq`{
        "cars": *[_type == "car" ${queryFilter}] {
             ...,
+            "id": _id,
             brand->,
             photos[]{
             ...,
@@ -102,7 +103,7 @@ async function fetchCars({
           "totalCars" : count(*[_type == "car"])
         }`;
 
-  return await client.fetch<{ cars: Car[]; totalCars: number }>(query, params);
+  return client.fetch<{ cars: Car[]; totalCars: number }>(query, params);
 }
 
 export default async function Page({ searchParams = {} }: Props) {
@@ -110,9 +111,9 @@ export default async function Page({ searchParams = {} }: Props) {
 
   return (
     <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-      {cars.map((car) => {
-        return <CarItem key={car._id} car={car}></CarItem>;
-      })}
+      {cars.map((car) => (
+        <CarItem key={car.id} car={car} />
+      ))}
     </div>
   );
 }

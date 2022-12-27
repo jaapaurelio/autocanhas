@@ -1,8 +1,7 @@
-import { Content } from "components/Content";
+import Content from "components/Content";
 import H1 from "components/H1";
 import TotalCars from "components/TotalCars";
 import CarsFilter from "components/CarsFilter";
-import { Suspense } from "react";
 
 // Layout is a Server Component by default
 interface Props {
@@ -15,7 +14,7 @@ export default function Layout({ children }: Props) {
         <div className="flex justify-between items-center mt-14 mb-8">
           <H1>As nossas viaturas</H1>
           <div className="text-right">
-            <TotalCars total={12}></TotalCars>
+            <TotalCars total={12} />
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-4">
