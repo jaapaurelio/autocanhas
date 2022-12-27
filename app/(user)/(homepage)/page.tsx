@@ -25,6 +25,7 @@ async function fetchData() {
   const query = groq` {
     "cars": *[_type == "car"][0...3]{
           ...,
+          "id": _id, 
           brand->,
           photos[]{
             ...,
