@@ -4,14 +4,17 @@ import { groq } from "next-sanity";
 import { DropDown } from "./ClientFilter";
 
 async function fetchFilters() {
-  const query = groq` {
-       "brands": *[_type == "brand"] | order(name) {
-            name,
-            _id
-          },
-        }`;
+  const query = groq`{
+    "brands": *[_type == "brand"] | order(name) {
+         name,
+         _id,
+         "count": count(*[_type == "car" && references(^._id)])
+       },
+     }`;
 
-  return await client.fetch<{ brands: { name: string; _id: string }[] }>(query);
+  return await client.fetch<{
+    brands: { name: string; _id: string; count: number }[];
+  }>(query);
 }
 
 interface LabelProps {
@@ -29,10 +32,12 @@ function Label({ children, name }: LabelProps) {
 export default async function CarsFilter() {
   const { brands } = await fetchFilters();
 
-  const brandsOptions = brands.map((brand) => ({
-    label: brand.name,
-    value: brand._id,
-  }));
+  const brandsOptions = brands
+    .filter((brand) => brand.count)
+    .map((brand) => ({
+      label: brand.name,
+      value: brand._id,
+    }));
 
   const prices = [
     5000, 8000, 10000, 12000, 14000, 16000, 18000, 20000, 25000, 30000, 40000,

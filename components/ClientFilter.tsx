@@ -31,6 +31,7 @@ export function DropDown({ options, name }: Props) {
     const query = queryString.stringify(parsed);
     router.replace(`${pathname}?${query}`);
   };
+
   return (
     <select
       onChange={onChange}
