@@ -1,5 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPhone,
+  faEnvelope,
+  faBars,
+  faClose,
+} from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
 import classnames from "classnames";
@@ -13,6 +18,32 @@ const menuOptions = [
   { href: "/oficina", title: "Oficina" },
   { href: "/contato", title: "Contato" },
 ];
+
+interface MenuOption {
+  href: string;
+  title: string;
+}
+interface PropsMenuMobile {
+  options: MenuOption[];
+}
+
+function MobileMenu({ options }: PropsMenuMobile) {
+  return (
+    <div className="bg-white z-50 fixed top-0 left-0 right-0 bottom-0">
+      <div>
+        <FontAwesomeIcon icon={faClose} />
+      </div>
+      <div>
+        {options.map(({ title, href }) => (
+          <div key={title}>
+            {href} {title}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 interface Props {
   hero?: boolean;
 }
@@ -70,7 +101,8 @@ export default function Header({ hero }: Props) {
           ))}
         </nav>
         <nav className="text-white grow justify-end text-right md:hidden">
-          H
+          <FontAwesomeIcon icon={faBars} />
+          <MobileMenu options={menuOptions} />
         </nav>
       </Content>
       {!hero && <div className="border-b border-gray-300" />}
