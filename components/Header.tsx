@@ -100,7 +100,7 @@ export default function Header({ hero }: Props) {
             </Link>
           ))}
         </nav>
-        <nav className="text-white grow justify-end text-right md:hidden">
+        <nav className="text-white grow justify-end text-right hidden">
           <FontAwesomeIcon icon={faBars} />
           <MobileMenu options={menuOptions} />
         </nav>
