@@ -5,7 +5,7 @@ import Content from "components/Content";
 import ImageGallery from "components/ImageGallery";
 import { formatEuro, formatNumber } from "lib/format";
 import client from "lib/sanityClient";
-import { idFromCarSlug, slugForCar, urlForImage } from "lib/urlUtils";
+import { slugForCar, urlForImage } from "lib/urlUtils";
 import { Car } from "typings";
 import {
   faCalendar,
@@ -23,6 +23,7 @@ import {
 import H1 from "components/H1";
 import H2 from "components/H2";
 import CheckItem from "components/CheckItem";
+import fetchCar from "./fetchCar";
 
 export const revalidate = 10;
 
@@ -55,20 +56,6 @@ export async function generateStaticParams() {
   }));
 }
 
-async function fetchCar(slug: string) {
-  const id = idFromCarSlug(slug);
-  const query = groq` 
-    *[_type == "car" && _id == $id][0]{
-        ...,
-        brand->,
-        photos[]{
-        ...,
-        asset->
-        }
-    }`;
-
-  return client.fetch<Car>(query, { id });
-}
 interface ItemProps {
   children: React.ReactNode;
 }
