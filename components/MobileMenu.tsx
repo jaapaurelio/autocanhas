@@ -19,7 +19,7 @@ export default function MobileMenu({ options }: PropsMenuMobile) {
   return (
     <>
       <button
-        className=""
+        aria-label="Abrir Menu"
         type="button"
         onClick={() => {
           setIsOpen(true);
@@ -30,6 +30,7 @@ export default function MobileMenu({ options }: PropsMenuMobile) {
       {isOpen && (
         <div className="bg-stone-800 text-white z-50 fixed top-0 left-0 right-0 bottom-0 shadow ">
           <button
+            aria-label="Fechar Menu"
             type="button"
             className="p-4 py-5 cursor-pointer"
             onClick={() => {
