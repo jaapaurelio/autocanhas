@@ -210,9 +210,9 @@ export default async function Viatura({ params: { slug } }: Props) {
             </div>
           )}
 
-          {car.info && (
-            <div className="my-10">
-              <H2 gutterTop>Informação adicional</H2>
+          <div className="my-10">
+            <H2 gutterTop>Informação adicional</H2>
+            {car.info && (
               <div>
                 {car.info?.split("\n").map((item, i) => (
                   // eslint-disable-next-line react/no-array-index-key
@@ -222,15 +222,16 @@ export default async function Viatura({ params: { slug } }: Props) {
                   </span>
                 ))}
               </div>
-              <div>
-                <p>Possibilidade de Financiamento em Até 120 Meses; </p>
-                <p>
-                  A Informação disponibilizada não dispensa a sua confirmação
-                  nem poderá ser considerada vinculativa;
-                </p>
-              </div>
+            )}
+            <div>
+              <p>Aceitamos retomas.</p>
+              <p>Possibilidade de Financiamento em Até 120 Meses.</p>
+              <p>
+                A Informação disponibilizada não dispensa a sua confirmação nem
+                poderá ser considerada vinculativa.
+              </p>
             </div>
-          )}
+          </div>
         </div>
         <div className="lg:w-1/4">
           <CarContact showHeader />
