@@ -281,8 +281,14 @@
     
   }
 
+.image-gallery-icon {
+    filter: none;
+}
 
 .image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
+    background: rgba(235, 233, 233, 0.615);
+    border-radius: 100%;
+    color: #dc2626;
 }

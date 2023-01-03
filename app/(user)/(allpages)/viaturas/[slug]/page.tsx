@@ -159,7 +159,11 @@ export default async function Viatura({ params: { slug } }: Props) {
       <div className="flex flex-col lg:flex-row gap-4 my-8">
         <div className="lg:w-3/4">
           <div className="pb-2">
-            <ImageGallery showIndex showPlayButton={false} items={images} />
+            <ImageGallery
+              showIndex={false}
+              showPlayButton={false}
+              items={images}
+            />
           </div>
           <div className="my-10">
             <H2 gutterTop>Detalhes da viatura</H2>
