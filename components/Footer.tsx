@@ -97,6 +97,18 @@ export default function Footer() {
         </div>
       </Content>
       <Content className="mt-14 text-stone-400">
+        <div className="my-4">
+          <a
+            href="https://www.livroreclamacoes.pt/Inicio/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Livro de Reclamações
+          </a>{" "}
+          &#x2022;{" "}
+          <Link href="/politica-de-privacidade">Política de Privacidade</Link>{" "}
+          &#x2022; <Link href="/politica-de-cookies">Política de Cookies</Link>{" "}
+        </div>
         <div className="">
           © Auto Canhas - A informação apresentada é para efeitos informativos.
         </div>

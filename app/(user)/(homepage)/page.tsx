@@ -47,15 +47,14 @@ async function fetchData() {
 const textCards = [
   {
     title: "O seu novo carro",
-    body: `Todas as nossas viaturas estão registadas em Portugal, com
-revisão e garantia de qualidade. Para sua proteção, podemos
-oferecer extensão da garantia da marca.`,
+    body: `Todas as nossas viaturas são de origem nacional, sujeitas a revisão e com garantia de
+    qualidade, podendo ainda oferecer a extensão de garantia da marca.`,
     icon: <FontAwesomeIcon className="px-2 text-primary" icon={faCarOn} />,
   },
   {
     title: "Financiamento",
-    body: `Quer pagar às prestações? Fazemos crédito com as melhores condições até 120 meses.
-      Contacte-nos para saber mais.`,
+    body: `Quer comprar o carro dos seus sonhos? É fácil, recorra ao financiamento até 120 meses.
+    Diga-nos o que pretende e: faremos uma simulação a sua medida, ou encontraremos uma solução enquadrada com as suas necessidades.`,
     icon: <FontAwesomeIcon className="px-2 text-primary" icon={faDollarSign} />,
   },
 ];
@@ -73,7 +72,7 @@ const whyChooseUs = [
   },
   {
     title: "Anos de experiência",
-    body: `Estando no mercado há 20 anos, temos a experiência necessária para lhe propor o melhor negócio possível.`,
+    body: `Estando no mercado há 28 anos, temos a experiência necessária para lhe propor o melhor negócio possível.`,
     icon: <FontAwesomeIcon className="px-2 text-primary" icon={faComments} />,
   },
   {

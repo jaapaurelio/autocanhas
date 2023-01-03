@@ -9,7 +9,6 @@ import Content from "components/Content";
 import H1 from "components/H1";
 
 export default async function Page() {
-  const years = new Date().getFullYear() - 1993 - 1;
   return (
     <div>
       <Content>
@@ -19,7 +18,7 @@ export default async function Page() {
               <H1 gutterBottom>
                 <span className="text-6xl">
                   Ao seu dispor{" "}
-                  <span className="text-primary">há {years} anos.</span>
+                  <span className="text-primary">há 28 anos.</span>
                 </span>
               </H1>
               <p>
