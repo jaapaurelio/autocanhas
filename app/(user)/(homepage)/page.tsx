@@ -21,6 +21,8 @@ import CarItem from "components/CarItem";
 import TotalCars from "components/TotalCars";
 import H1 from "components/H1";
 
+export const revalidate = 60;
+
 async function fetchData() {
   const query = groq` {
     "cars": *[_type == "car"][0...3]{
