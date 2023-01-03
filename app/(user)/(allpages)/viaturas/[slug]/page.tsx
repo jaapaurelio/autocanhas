@@ -24,7 +24,7 @@ import H1 from "components/H1";
 import H2 from "components/H2";
 import CheckItem from "components/CheckItem";
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 interface Props {
   params: {

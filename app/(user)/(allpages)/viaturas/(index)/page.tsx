@@ -90,7 +90,7 @@ async function fetchCars({
     params.year_max = Number(year_max);
   }
 
-  const query = groq`*[_type == "car" ${queryFilter}] {
+  const query = groq`*[_type == "car" ${queryFilter}] | order(_createdAt desc) {
             ...,
             "id": _id,
             brand->,
