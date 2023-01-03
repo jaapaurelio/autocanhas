@@ -13,10 +13,13 @@ export default async function Head({
     .height(627)
     .format("webp")
     .url();
+  const description = `${car.enginePower}, ${car.horsePower} de ${car.year}, caixa ${car.transmission}, ${car.fuel} com ${car.km} km.`;
 
   return (
     <>
       <title>{title}</title>
+      <meta name="description" content={description} />
+
       <meta property="og:title" content={title} />
       <meta property="og:image" content={photo} />
     </>
