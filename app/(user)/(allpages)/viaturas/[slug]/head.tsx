@@ -18,9 +18,11 @@ export default async function Head({
   return (
     <>
       <title>{title}</title>
-      <meta name="description" content={description} />
-
       <meta property="og:title" content={title} />
+
+      <meta name="description" content={description} />
+      <meta property="og:description" content={description} />
+
       <meta property="og:image" content={photo} />
     </>
   );
