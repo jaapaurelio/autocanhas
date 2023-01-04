@@ -16,7 +16,6 @@ import {
   faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import Button from "components/Button";
 import CarItem from "components/CarItem";
 import TotalCars from "components/TotalCars";
 import H1 from "components/H1";
@@ -115,14 +114,16 @@ export default async function Page() {
           ))}
         </div>
         <div className="my-8 text-right">
-          <Link href="/viaturas" data-pw="show-all-btn">
-            <Button>
-              Ver todas as viaturas{" "}
-              <FontAwesomeIcon
-                className="px-2 text-primary"
-                icon={faArrowRight}
-              />
-            </Button>
+          <Link
+            href="/viaturas"
+            data-pw="show-all-btn"
+            className="text-gray-900 bg-white border border-primary focus:outline-none hover:bg-secondary focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 w-full md:w-auto"
+          >
+            Ver todas as viaturas{" "}
+            <FontAwesomeIcon
+              className="px-2 text-primary"
+              icon={faArrowRight}
+            />
           </Link>
         </div>
       </Content>
