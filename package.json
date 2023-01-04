@@ -12,7 +12,7 @@
     "test:e2e": "playwright test"
   },
   "lint-staged": {
-    "**/*{.tsx,.ts,.css}": [
+    "**/*{.tsx,.ts}": [
       "eslint . --fix",
       "prettier --write ."
     ]

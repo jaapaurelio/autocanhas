@@ -1,21 +1,9 @@
-import { groq } from "next-sanity";
-import CarItem from "components/CarItem";
+import { SearchParamsProps } from "components/DropdownSearchParam";
 import client from "lib/sanityClient";
+import { groq } from "next-sanity";
 import { Car } from "typings";
 
-interface SearchParamsProps {
-  brand?: string;
-  fuel?: string;
-  transmission?: string;
-  price_min?: string;
-  price_max?: string;
-  km_min?: string;
-  km_max?: string;
-  year_min?: string;
-  year_max?: string;
-}
-
-interface QueryParams {
+interface GroqQueryParams {
   brand?: string;
   fuel?: string;
   transmission?: string;
@@ -27,11 +15,11 @@ interface QueryParams {
   year_max?: number;
 }
 
-interface Props {
-  searchParams?: SearchParamsProps;
-}
-
-async function fetchCars({
+/**
+ *
+ * Fetch the list of cars based on the params.
+ */
+export default async function fetchCars({
   brand = "",
   fuel = "",
   transmission = "",
@@ -43,7 +31,7 @@ async function fetchCars({
   year_max = "",
 }: SearchParamsProps) {
   let queryFilter = "";
-  const params: QueryParams = {};
+  const params: GroqQueryParams = {};
 
   if (brand) {
     queryFilter += ` && references($brand)`;
@@ -91,43 +79,15 @@ async function fetchCars({
   }
 
   const query = groq`*[_type == "car" ${queryFilter}] | order(_createdAt desc) {
-            ...,
-            "id": _id,
-            brand->,
-            photos[]{
-            ...,
-            asset->
+              ...,
+              "id": _id,
+              brand->,
+              photos[]{
+              ...,
+              asset->
+              }
             }
-          }
-        `;
+          `;
 
   return client.fetch<Car[]>(query, params);
 }
-
-export default async function Page({ searchParams = {} }: Props) {
-  const cars = await fetchCars(searchParams);
-
-  return (
-    <div className="md:w-3/4">
-      {!!cars.length && (
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
-          data-pw="cars-list"
-        >
-          {cars.map((car) => (
-            <CarItem key={car.id} car={car} />
-          ))}
-        </div>
-      )}
-
-      {!cars.length && (
-        <div className="text-center" data-pw="no-cars">
-          <p>Não existem carros disponíveis para a sua pesquisa.</p>
-          <p>Por favor, pesquine novamente com outros dados.</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export const revalidate = 0;

@@ -5,3 +5,4 @@ postcss.config.js
 next.config.js
 sanity.cli.ts
 schemas
+.vscode

@@ -5,24 +5,20 @@ import roadImage from "public/images/road.jpg";
 import { groq } from "next-sanity";
 import { Car } from "typings";
 import Content from "components/Content";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCarOn,
-  faArrowRight,
-  faDollarSign,
-  faTag,
-  faStar,
-  faComments,
-  faScrewdriverWrench,
-} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import Button from "components/Button";
 import CarItem from "components/CarItem";
 import TotalCars from "components/TotalCars";
 import H1 from "components/H1";
+import FaIcon from "components/FaIcon";
+import { textCards, whyChooseUs } from "./constants";
 
 export const revalidate = 10;
 
+/**
+ *
+ * Fetches all the data needed in this page.
+ *
+ */
 async function fetchData() {
   const query = groq` {
     "cars": *[_type == "car"] | order(_createdAt desc) [0...3]{
@@ -43,49 +39,6 @@ async function fetchData() {
   );
   return response;
 }
-
-const textCards = [
-  {
-    title: "O seu novo carro",
-    body: `Todas as nossas viaturas são de origem nacional, sujeitas a revisão e com garantia de
-    qualidade, podendo ainda oferecer a extensão de garantia da marca.`,
-    icon: <FontAwesomeIcon className="px-2 text-primary" icon={faCarOn} />,
-  },
-  {
-    title: "Financiamento",
-    body: `Quer comprar o carro dos seus sonhos? É fácil, recorra ao financiamento até 120 meses.
-    Diga-nos o que pretende e: faremos uma simulação a sua medida, ou encontraremos uma solução enquadrada com as suas necessidades.`,
-    icon: <FontAwesomeIcon className="px-2 text-primary" icon={faDollarSign} />,
-  },
-];
-
-const whyChooseUs = [
-  {
-    title: "Financiamento",
-    body: `Sem complicações, o nosso crédito permite que page o seu carro até 120 meses.`,
-    icon: <FontAwesomeIcon className="px-2 text-primary" icon={faTag} />,
-  },
-  {
-    title: "As melhores marcas",
-    body: `Temos uma grande seleção de marcas e modelos, desde as mais económicas às mais robustas.`,
-    icon: <FontAwesomeIcon className="px-2 text-primary" icon={faStar} />,
-  },
-  {
-    title: "Anos de experiência",
-    body: `Estando no mercado há 28 anos, temos a experiência necessária para lhe propor o melhor negócio possível.`,
-    icon: <FontAwesomeIcon className="px-2 text-primary" icon={faComments} />,
-  },
-  {
-    title: "Oficina e manutenção",
-    body: `A nossa oficina garante que todos os nossos carros estão nas melhores condições possíveis. `,
-    icon: (
-      <FontAwesomeIcon
-        className="px-2 text-primary"
-        icon={faScrewdriverWrench}
-      />
-    ),
-  },
-];
 
 export default async function Page() {
   const { cars, totalCars } = await fetchData();
@@ -115,14 +68,13 @@ export default async function Page() {
           ))}
         </div>
         <div className="my-8 text-right">
-          <Link href="/viaturas" data-pw="show-all-btn">
-            <Button>
-              Ver todas as viaturas{" "}
-              <FontAwesomeIcon
-                className="px-2 text-primary"
-                icon={faArrowRight}
-              />
-            </Button>
+          <Link
+            href="/viaturas"
+            data-pw="show-all-btn"
+            className="text-gray-900 bg-white border border-primary focus:outline-none hover:bg-secondary focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 w-full md:w-auto"
+          >
+            Ver todas as viaturas{" "}
+            <FaIcon name="faArrowRight" className="px-2 text-primary" />
           </Link>
         </div>
       </Content>
@@ -140,7 +92,9 @@ export default async function Page() {
                 key={text.title}
                 className="bg-white flex gap-5 justify-center items-start p-6 rounded shadow"
               >
-                <div className="text-5xl text-center ">{text.icon}</div>
+                <div className="text-5xl text-center ">
+                  <FaIcon name={text.icon} className="px-2 text-primary" />
+                </div>
 
                 <div className="">
                   <div className="text-3xl mb-2">{text.title}</div>
@@ -156,12 +110,14 @@ export default async function Page() {
           Porquê escolher o auto canhas
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9">
-          {whyChooseUs.map((why) => (
-            <div key={why.title} className="flex flex-row gap-3">
-              <div className="text-3xl">{why.icon}</div>
+          {whyChooseUs.map(({ title, icon, body }) => (
+            <div key={title} className="flex flex-row gap-3">
+              <div className="text-3xl">
+                <FaIcon name={icon} className="px-2 text-primary" />
+              </div>
               <div>
-                <div className="font-bold mb-3">{why.title}</div>
-                <div className="text-sm">{why.body}</div>
+                <div className="font-bold mb-3">{title}</div>
+                <div className="text-sm">{body}</div>
               </div>
             </div>
           ))}

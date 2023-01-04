@@ -3,7 +3,7 @@ import H1 from "components/H1";
 import TotalCars from "components/TotalCars";
 import { groq } from "next-sanity";
 import client from "lib/sanityClient";
-import LeftFilter from "./LeftFilter";
+import CarFilter from "components/CarFilter";
 
 // Layout is a Server Component by default
 interface Props {
@@ -31,7 +31,7 @@ export default async function Layout({ children }: Props) {
         <div className="flex flex-col md:flex-row gap-4">
           <div className="mb-8 md:w-1/4">
             {/* @ts-expect-error Server Component */}
-            <LeftFilter />
+            <CarFilter />
           </div>
 
           {children}
