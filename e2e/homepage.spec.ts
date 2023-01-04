@@ -39,3 +39,22 @@ test("should have all required elements", async ({ page }) => {
 
   await expect(await newCarsSection.getByTestId("show-all-btn")).toBeVisible();
 });
+
+test("should navigate to car page", async ({ page }) => {
+  await page.goto("/");
+
+  const newCarsSection = await page.getByTestId("new-cars-section");
+  const newCars = await newCarsSection.getByTestId("car-item");
+
+  await newCars.nth(0).click();
+  const carTitle = await newCars
+    .nth(0)
+    .getByTestId("car-item-title")
+    .textContent();
+
+  await expect.poll(async () => page.url()).toContain("/viaturas/");
+
+  await expect(await page.getByTestId("car-title").textContent()).toEqual(
+    carTitle
+  );
+});

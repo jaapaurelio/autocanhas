@@ -146,7 +146,7 @@ export default async function Viatura({ params: { slug } }: Props) {
   return (
     <Content className="my-10">
       <div>
-        <H1 big gutterTop>
+        <H1 big gutterTop data-pw="car-title">
           {car.title}
         </H1>
         <div className="my-2">

@@ -5,11 +5,19 @@ interface Props {
   big?: boolean;
   gutterBottom?: boolean;
   gutterTop?: boolean;
+  "data-pw"?: string;
 }
 
-export default function H1({ children, big, gutterBottom, gutterTop }: Props) {
+export default function H1({
+  children,
+  big,
+  gutterBottom,
+  gutterTop,
+  "data-pw": dataPw = "",
+}: Props) {
   return (
     <h1
+      data-pw={dataPw}
       className={classnames({
         "text-2xl": !big,
         "text-5xl font-bold": big,
