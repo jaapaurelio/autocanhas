@@ -7,6 +7,6 @@ module.exports = {
     project: "./tsconfig.json",
   },
   rules: {
-    "react/require-default-props": "off"
-  }
+    "react/require-default-props": "off",
+  },
 };

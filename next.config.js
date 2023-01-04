@@ -1,12 +1,12 @@
 module.exports = {
   reactStrictMode: true,
   experimental: {
-    appDir: true
+    appDir: true,
   },
   images: {
-    domains: ["cdn.sanity.io"]
+    domains: ["cdn.sanity.io"],
   },
   eslint: {
-    dirs: ['app', 'lib', 'components'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
+    dirs: ["app", "lib", "components"], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
   },
 };
