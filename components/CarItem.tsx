@@ -36,7 +36,7 @@ export default function CarItem({ car }: Props) {
               className="text-lg font-bold text-ellipsis"
               data-pw="car-item-title"
             >
-              {car.title}
+              Titulo: {car.title}
             </div>
             <div>
               {car.year} &#x2022; {formatNumber(car.km)} km &#x2022; {car.fuel}{" "}
