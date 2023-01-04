@@ -17,6 +17,7 @@ export default function CarItem({ car }: Props) {
 
   return (
     <div
+      data-pw="car-item"
       key={car.id}
       className="shadow rounded overflow-hidden group cursor-pointer"
     >
@@ -31,13 +32,20 @@ export default function CarItem({ car }: Props) {
         </div>
         <div className="p-6 flex flex-col justify-between">
           <div className="grow">
-            <div className="text-lg font-bold text-ellipsis">{car.title}</div>
+            <div
+              className="text-lg font-bold text-ellipsis"
+              data-pw="car-item-title"
+            >
+              {car.title}
+            </div>
             <div>
               {car.year} &#x2022; {formatNumber(car.km)} km &#x2022; {car.fuel}{" "}
               &#x2022; {car.transmission}
             </div>
           </div>
-          <div className="text-primary font-bold">{formatEuro(car.price)}</div>
+          <div data-pw="car-item-price" className="text-primary font-bold">
+            {formatEuro(car.price)}
+          </div>
         </div>
       </Link>
     </div>

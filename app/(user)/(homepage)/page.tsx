@@ -101,7 +101,7 @@ export default async function Page() {
           className="object-cover"
         />
       </div>
-      <Content>
+      <Content data-pw="new-cars-section">
         <div className="flex justify-between items-center">
           <H1 gutterTop gutterBottom>
             As mais recentes
@@ -115,7 +115,7 @@ export default async function Page() {
           ))}
         </div>
         <div className="my-8 text-right">
-          <Link href="/viaturas">
+          <Link href="/viaturas" data-pw="show-all-btn">
             <Button>
               Ver todas as viaturas{" "}
               <FontAwesomeIcon

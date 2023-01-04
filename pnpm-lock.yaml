@@ -9,6 +9,7 @@ specifiers:
   '@fortawesome/react-fontawesome': ^0.2.0
   '@next/env': ^13.1.1
   '@next/font': ^13.1.1
+  '@playwright/test': ^1.29.1
   '@sanity/client': ^4.0.0
   '@sanity/eslint-config-studio': ^2.0.1
   '@sanity/image-url': ^1.0.1
@@ -70,6 +71,7 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.20.7
+  '@playwright/test': 1.29.1
   '@sanity/eslint-config-studio': 2.0.1_iukboom6ndih5an6iafl45j2fe
   '@types/node': 18.11.18
   '@types/react': 18.0.26
@@ -1920,6 +1922,15 @@ packages:
       picocolors: 1.0.0
       tiny-glob: 0.2.9
       tslib: 2.4.1
+    dev: true
+
+  /@playwright/test/1.29.1:
+    resolution: {integrity: sha512-iQxk2DX5U9wOGV3+/Jh9OHPsw5H3mleUL2S4BgQuwtlAfK3PnKvn38m4Rg9zIViGHVW24opSm99HQm/UFLEy6w==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      '@types/node': 18.11.18
+      playwright-core: 1.29.1
     dev: true
 
   /@portabletext/react/1.0.6_react@18.2.0:
@@ -6349,6 +6360,12 @@ packages:
     dependencies:
       find-up: 5.0.0
     dev: false
+
+  /playwright-core/1.29.1:
+    resolution: {integrity: sha512-20Ai3d+lMkWpI9YZYlxk8gxatfgax5STW8GaMozAHwigLiyiKQrdkt7gaoT9UQR8FIVDg6qVXs9IoZUQrDjIIg==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
 
   /pluralize-esm/9.0.4:
     resolution: {integrity: sha512-W4lzqTUGzTIBKkFk0EzCdksczs+KG6D0dvE0o10mK62yYtLazjVU5OY1GT70F3xw9bS6t+eQx4eDT1tiphDBeg==}

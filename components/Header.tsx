@@ -44,7 +44,7 @@ export default function Header({ hero }: Props) {
         </Content>
       </div>
       <Content className="z-20 flex justify-center items-center py-4">
-        <Link href="/">
+        <Link href="/" data-pw="logo">
           <div className="grow-0 shrink-0 w-40 md:w-auto">
             <Image
               src={hero ? logow : logo}
@@ -54,7 +54,7 @@ export default function Header({ hero }: Props) {
             />
           </div>
         </Link>
-        <nav className="grow justify-end hidden md:flex">
+        <nav className="grow justify-end hidden md:flex" data-pw="top-menu">
           {menuOptions.map((option) => (
             <Link
               key={option.title}
