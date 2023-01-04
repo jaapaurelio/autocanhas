@@ -26,7 +26,7 @@ export default function Layout({ children }: Props) {
   return (
     <html lang="pt" className={`${inter.variable} ${stmIcon.variable}`}>
       <head>
-        <title>Auto Canhas Stand Automóvel</title>
+        <title>Auto Canhas Stand Automóvel.</title>
         <meta
           name="description"
           content="Auto Canhas Stand Automóvel garante a qualiade e o melhor preço em todos os seu veículos."
