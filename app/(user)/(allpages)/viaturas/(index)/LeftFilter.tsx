@@ -108,7 +108,7 @@ export default async function CarsFilter() {
   ];
 
   return (
-    <div className="shadow p-2">
+    <div className="shadow p-2" data-pw="cars-filter">
       <div className="grid grid-cols-1 md:grid-cols-1 gap-1 md:gap-4">
         {singleDropdownItem.map(({ name, title, options }) => (
           <div key={name}>
