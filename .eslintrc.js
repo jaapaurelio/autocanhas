@@ -8,6 +8,6 @@ module.exports = {
   },
   rules: {
     "react/require-default-props": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
   },
 };
