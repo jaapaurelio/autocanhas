@@ -57,6 +57,7 @@ export default function Layout({ children }: Props) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="viewport" content="width=device-width" />
+        <meta name="twitter:card" content="summary" />
       </head>
       <body>
         {children}

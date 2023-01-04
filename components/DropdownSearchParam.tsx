@@ -4,17 +4,38 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import queryString from "query-string";
 import { useState } from "react";
 
+export interface SearchParamsProps {
+  brand?: string;
+  fuel?: string;
+  transmission?: string;
+  price_min?: string;
+  price_max?: string;
+  km_min?: string;
+  km_max?: string;
+  year_min?: string;
+  year_max?: string;
+}
+export type SearchParamName = keyof SearchParamsProps;
+
 interface Option {
   label: string;
   value: string;
 }
 
-interface Props {
+export interface DropdownSearchParamProps {
   options: Option[];
-  name: string;
+  name: SearchParamName;
 }
 
-export default function DropDown({ options, name }: Props) {
+/**
+ *
+ * This component is responsible to set and read search params that can be used by the page to load data.
+ *
+ */
+export default function DropdownSearchParam({
+  options,
+  name,
+}: DropdownSearchParamProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();

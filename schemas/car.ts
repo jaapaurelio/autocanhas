@@ -1,14 +1,5 @@
+import { fuels, transmitions } from "constants/filters";
 import { defineType, defineField } from "sanity";
-
-const fuels = [
-  "Diesel",
-  "Eléctrico",
-  "Gasolina",
-  "GPL",
-  "Híbrido (Diesel)",
-  "Híbrido (Gasolina)",
-  "Hidrogénio",
-];
 
 const extras = [
   "Apple CarPlay",
@@ -141,7 +132,7 @@ const car = defineType({
       name: "transmission",
       type: "string",
       options: {
-        list: ["Manual", "Automática"],
+        list: transmitions,
       },
       validation: (Rule) => Rule.required(),
     }),
