@@ -1,12 +1,8 @@
-import { groq } from "next-sanity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CarContact from "components/CarContact";
 import Content from "components/Content";
 import ImageGallery from "components/ImageGallery";
 import { formatEuro, formatNumber } from "lib/format";
-import client from "lib/sanityClient";
-import { slugForCar, urlForImage } from "lib/urlUtils";
-import { Car } from "typings";
 import {
   faCalendar,
   faCar,
@@ -23,15 +19,13 @@ import {
 import H1 from "components/H1";
 import H2 from "components/H2";
 import CheckItem from "components/CheckItem";
+import client from "lib/sanityClient";
+import { slugForCar, urlForImage } from "lib/urlUtils";
+import { groq } from "next-sanity";
+import { Car } from "typings";
 import fetchCar from "./fetchCar";
 
 export const revalidate = 10;
-
-interface Props {
-  params: {
-    slug: string;
-  };
-}
 
 /**
  * https://beta.nextjs.org/docs/api-reference/generate-static-params
@@ -43,11 +37,11 @@ interface Props {
  */
 export async function generateStaticParams() {
   const query = groq`
-        *[_type=='car']{
-          "id": _id,
-          title
-        }
-    `;
+          *[_type=='car']{
+            "id": _id,
+            title
+          }
+      `;
 
   const cars = await client.fetch<Car[]>(query);
 
@@ -56,16 +50,18 @@ export async function generateStaticParams() {
   }));
 }
 
+interface Props {
+  params: {
+    slug: string;
+  };
+}
+
 interface ItemProps {
   children: React.ReactNode;
 }
 
 function ItemLabel({ children }: ItemProps) {
   return <div className="text-gray-600 text-sm">{children}</div>;
-}
-
-function ItemValue({ children }: ItemProps) {
-  return <div className="">{children}</div>;
 }
 
 function ItemContainer({ children }: ItemProps) {
@@ -182,7 +178,7 @@ export default async function Viatura({ params: { slug } }: Props) {
                       />
                       {info.label}
                     </ItemLabel>
-                    <ItemValue>{info.value}</ItemValue>
+                    <div>{info.value}</div>
                   </ItemContainer>
                 );
               })}

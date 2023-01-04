@@ -20,7 +20,11 @@ interface Props {
 }
 export default function Header({ hero }: Props) {
   return (
-    <section>
+    <section
+      className={classnames({
+        "border-b border-gray-300": !hero,
+      })}
+    >
       <div
         className={classnames("z-20 hidden md:block", {
           "bg-primary": !hero,
@@ -80,7 +84,6 @@ export default function Header({ hero }: Props) {
           <MobileMenu options={menuOptions} />
         </div>
       </Content>
-      {!hero && <div className="border-b border-gray-300" />}
     </section>
   );
 }
