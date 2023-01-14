@@ -4,6 +4,7 @@ import {
   faMessage,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import WhatsAppFloat from "./WhatsAppFloat";
 
 interface Props {
   showHeader?: boolean;
@@ -34,12 +35,12 @@ export default function CarContact({ showHeader }: Props) {
                 className="px-2 text-primary"
                 icon={faEnvelope}
               />
-              <span>geral@autocanhas.com.pt</span>
+              <span>geral@autocanhas.com</span>
             </div>
           </div>
-
+          <WhatsAppFloat text="Enviar mensagem WhatsApp" />
           <div className="text-gray-500 my-5 text-sm">
-            <p>Ou envie uma mensagem:</p>
+            <p>Ou envie utilize o seguinte formulário:</p>
           </div>
         </div>
       )}

@@ -43,7 +43,7 @@ export default function Header({ hero }: Props) {
           </div>
           <div>
             <FontAwesomeIcon className="px-2 text-white" icon={faEnvelope} />
-            <span>geral@autocanhas.com.pt</span>
+            <span>geral@autocanhas.com</span>
           </div>
         </Content>
       </div>
