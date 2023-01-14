@@ -30,6 +30,7 @@ export default async function Layout({ children }: Props) {
         </div>
         <div className="flex flex-col md:flex-row gap-4">
           <div className="mb-8 md:w-1/4">
+            {/* @ts-expect-error Server Component */}
             <CarFilter />
           </div>
 
