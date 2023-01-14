@@ -45,7 +45,7 @@ export default async function Page() {
               <div>
                 <div className="font-bold mb-2">Morada</div>
                 <div>Estrada Eng. Teixeira de Sousa 51,</div>
-                <div>9360-361 Canhas</div>
+                <div>9360-325 Canhas</div>
               </div>
             </div>
             <div className="flex">
