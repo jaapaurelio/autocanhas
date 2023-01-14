@@ -5,6 +5,7 @@ import Footer from "components/Footer";
 import { Inter } from "@next/font/google";
 import localFont from "@next/font/local";
 import "./globals.css";
+import logo from "public/images/logo-share.webp";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -58,6 +59,10 @@ export default function Layout({ children }: Props) {
         <meta name="theme-color" content="#ffffff" />
         <meta name="viewport" content="width=device-width" />
         <meta name="twitter:card" content="summary" />
+        <meta
+          property="og:image"
+          content={`https://www.autocanhas.com${logo.src}`}
+        />
       </head>
       <body>
         {children}
