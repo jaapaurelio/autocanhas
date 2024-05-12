@@ -4,6 +4,7 @@ import TotalCars from "components/TotalCars";
 import { groq } from "next-sanity";
 import client from "lib/sanityClient";
 import CarFilter from "components/CarFilter";
+import { Metadata } from "next";
 
 // Layout is a Server Component by default
 interface Props {
@@ -23,7 +24,7 @@ export default async function Layout({ children }: Props) {
     <div>
       <Content>
         <div className="flex justify-between items-center mt-14 mb-8">
-          <H1>As nossas viaturas</H1>
+          <H1>As nossa viaturas</H1>
           <div className="text-right">
             <TotalCars total={numberOfCars} />
           </div>
@@ -38,4 +39,14 @@ export default async function Layout({ children }: Props) {
       </Content>
     </div>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const numberOfCars = await fetchNumberOfCars();
+
+  return {
+    title: `Ver ${numberOfCars} carros usados | Auto Canhas`,
+    description:
+      "No Auto Canhas encontra carros usados de qualidade com financiamento fácil. Visite-nos agora para garantir o seu próximo carro! As melhores ofertas em Funchal e Ilha da Madeira.",
+  };
 }

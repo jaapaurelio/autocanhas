@@ -11,6 +11,7 @@ import TotalCars from "components/TotalCars";
 import H1 from "components/H1";
 import FaIcon from "components/FaIcon";
 import { textCards, whyChooseUs } from "./constants";
+import { Metadata } from "next";
 
 export const revalidate = 10;
 
@@ -125,4 +126,12 @@ export default async function Page() {
       </Content>
     </div>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: `Auto Canhas: Carros usados de Qualidade na Ilha da Madeira.`,
+    description:
+      "No Auto Canhas encontra carros usados de qualidade com financiamento fácil. Visite-nos agora para garantir o seu próximo carro! As melhores ofertas em Funchal e Ilha da Madeira.",
+  };
 }

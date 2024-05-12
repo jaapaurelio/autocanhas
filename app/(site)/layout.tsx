@@ -8,6 +8,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import logo from "public/images/logo-share.webp";
+import { Metadata } from "next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,11 +30,6 @@ export default function Layout({ children }: Props) {
   return (
     <html lang="pt" className={`${inter.variable} ${stmIcon.variable}`}>
       <head>
-        <title>Auto Canhas Stand Automóvel</title>
-        <meta
-          name="description"
-          content="Auto Canhas Stand Automóvel garante a qualiade e o melhor preço em todos os seu veículos."
-        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -61,10 +57,6 @@ export default function Layout({ children }: Props) {
         <meta name="theme-color" content="#ffffff" />
         <meta name="viewport" content="width=device-width" />
         <meta name="twitter:card" content="summary" />
-        <meta
-          property="og:image"
-          content={`https://www.autocanhas.com${logo.src}`}
-        />
       </head>
       <body>
         {children}
@@ -75,3 +67,12 @@ export default function Layout({ children }: Props) {
     </html>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Auto Canhas Stand Automóvel",
+  description:
+    "Auto Canhas Stand Automóvel garante a qualiade e o melhor preço em todos os seu veículos.",
+  openGraph: {
+    images: `https://www.autocanhas.com${logo.src}`,
+  },
+};

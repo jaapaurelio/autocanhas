@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CarContact from "components/CarContact";
 import Content from "components/Content";
@@ -28,7 +29,7 @@ import fetchCar from "./fetchCar";
 export const revalidate = 10;
 
 /**
- * https://beta.nextjs.org/docs/api-reference/generate-static-params
+ * https://nextjs.org/docs/app/api-reference/functions/generate-static-params
  *
  * Define the list of route segment parameters that will be statically
  * generated at build time instead of on-demand at request time.
@@ -226,4 +227,28 @@ export default async function Viatura({ params: { slug } }: Props) {
       </div>
     </Content>
   );
+}
+
+function generateDescription(car: Car): string {
+  return `${car.title} com ${formatNumber(car.km)}km por ${formatEuro(car.price)}.
+  Equipado com um motor ${car.fuel}, este ${car.brand.name} oferece uma potência de ${car.horsePower}cv e possui uma caixa ${car.transmission}.
+  Com capacidade para ${car.seats} lugares e ${car.doors} portas, é o veículo certo para o que procura.`;
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: Props): Promise<Metadata> {
+  const car = await fetchCar(slug);
+
+  const images = car.photos.map((photo) =>
+    urlForImage(photo).width(1200).format("webp").url(),
+  );
+
+  return {
+    title: `${car.title} de ${car.year} com ${formatNumber(car.km)} km ${car.fuel}`,
+    description: generateDescription(car),
+    openGraph: {
+      images: images,
+    },
+  };
 }

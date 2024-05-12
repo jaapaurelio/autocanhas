@@ -1,6 +1,7 @@
 import CarItem from "components/CarItem";
 import { SearchParamsProps } from "components/DropdownSearchParam";
 import fetchCars from "./fetchCars";
+import { urlForImage } from "lib/urlUtils";
 
 interface Props {
   searchParams?: SearchParamsProps;
@@ -38,3 +39,13 @@ export default async function Page({ searchParams = {} }: Props) {
  * TODO: Investigate how can we improve this behaviour.
  */
 export const revalidate = 0;
+
+export async function generateMetadata({ searchParams = {} }: Props) {
+  const cars = await fetchCars(searchParams);
+
+  return {
+    openGraph: {
+      images: urlForImage(cars[0].photos[0]).format("webp").width(1200).url(),
+    },
+  };
+}
