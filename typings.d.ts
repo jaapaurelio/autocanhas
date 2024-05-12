@@ -40,4 +40,5 @@ export interface Car extends SanityBody {
   extras?: string[];
   enginePower: string;
   info?: string;
+  article?: string;
 }

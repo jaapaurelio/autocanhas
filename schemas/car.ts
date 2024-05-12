@@ -173,6 +173,12 @@ const car = defineType({
       type: "text",
       description: "Pequeno texto com mais informação sobre o carro.",
     }),
+    defineField({
+      type: "markdown",
+      title: "Artigo de detalhe",
+      description: "Um artigo sobre o carro.",
+      name: "article",
+    }),
   ],
 });
 

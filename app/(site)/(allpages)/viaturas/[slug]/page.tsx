@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Markdown from "react-markdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CarContact from "components/CarContact";
 import Content from "components/Content";
@@ -197,7 +198,11 @@ export default async function Viatura({ params: { slug } }: Props) {
               </div>
             </div>
           )}
-
+          {!!car.article && (
+            <div className="my-10 article">
+              {<Markdown>{car.article}</Markdown>}
+            </div>
+          )}
           <div className="my-10">
             <H2 gutterTop>Informação adicional</H2>
             {car.info && (
