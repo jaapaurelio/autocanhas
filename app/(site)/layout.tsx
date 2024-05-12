@@ -2,8 +2,8 @@ import React from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Footer from "components/Footer";
-import { Inter } from "@next/font/google";
-import localFont from "@next/font/local";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import logo from "public/images/logo-share.webp";
 
