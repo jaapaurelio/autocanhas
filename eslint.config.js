@@ -9,7 +9,7 @@ module.exports = [
       "next.config.js",
       "sanity.cli.ts",
       "schemas",
-      ".vscode"
-    ]
-  }
+      ".vscode",
+    ],
+  },
 ];

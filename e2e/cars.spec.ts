@@ -32,7 +32,7 @@ test("should filter cars", async ({ page }) => {
 
   // Url should reflect our selection.
   await expect(await page.url()).toContain(
-    "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22"
+    "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22",
   );
 
   // Reset brand filter
@@ -57,7 +57,7 @@ test("should filter cars", async ({ page }) => {
   await expect
     .poll(async () => page.url())
     .toContain(
-      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel"
+      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel",
     );
 
   await carsFilter.locator("select#transmission").selectOption("Manual");
@@ -65,46 +65,46 @@ test("should filter cars", async ({ page }) => {
   await expect
     .poll(async () => page.url())
     .toContain(
-      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&transmission=Manual"
+      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&transmission=Manual",
     );
   await carsFilter.locator("select#price_min").selectOption("5000");
   await expect
     .poll(async () => page.url())
     .toContain(
-      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&price_min=5000&transmission=Manual"
+      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&price_min=5000&transmission=Manual",
     );
   await carsFilter.locator("select#price_max").selectOption("8000");
   await expect
     .poll(async () => page.url())
     .toContain(
-      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&price_max=8000&price_min=5000&transmission=Manual"
+      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&price_max=8000&price_min=5000&transmission=Manual",
     );
   await carsFilter.locator("select#km_min").selectOption("5000");
   await expect
     .poll(async () => page.url())
     .toContain(
-      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&km_min=5000&price_max=8000&price_min=5000&transmission=Manual"
+      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&km_min=5000&price_max=8000&price_min=5000&transmission=Manual",
     );
 
   await carsFilter.locator("select#km_max").selectOption("10000");
   await expect
     .poll(async () => page.url())
     .toContain(
-      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&km_max=10000&km_min=5000&price_max=8000&price_min=5000&transmission=Manual"
+      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&km_max=10000&km_min=5000&price_max=8000&price_min=5000&transmission=Manual",
     );
 
   await carsFilter.locator("select#year_min").selectOption("2021");
   await expect
     .poll(async () => page.url())
     .toContain(
-      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&km_max=10000&km_min=5000&price_max=8000&price_min=5000&transmission=Manual&year_min=2021"
+      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&km_max=10000&km_min=5000&price_max=8000&price_min=5000&transmission=Manual&year_min=2021",
     );
 
   await carsFilter.locator("select#year_max").selectOption("2022");
   await expect
     .poll(async () => page.url())
     .toContain(
-      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&km_max=10000&km_min=5000&price_max=8000&price_min=5000&transmission=Manual&year_max=2022&year_min=2021"
+      "/viaturas?brand=d6805f7f-249a-440f-b7eb-cd231f3bdd22&fuel=Diesel&km_max=10000&km_min=5000&price_max=8000&price_min=5000&transmission=Manual&year_max=2022&year_min=2021",
     );
 
   // With this strict search, we should have no cars avaiable.

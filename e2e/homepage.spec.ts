@@ -28,13 +28,13 @@ test("should have all required elements", async ({ page }) => {
   await newCarsSection.isVisible();
   await expect(newCars).toHaveCount(3);
   await expect(
-    await newCars.nth(0).locator("> a").getAttribute("href")
+    await newCars.nth(0).locator("> a").getAttribute("href"),
   ).toContain("/viaturas");
   await expect(
-    await newCars.nth(0).getByTestId("car-item-title")
+    await newCars.nth(0).getByTestId("car-item-title"),
   ).toBeVisible();
   await expect(
-    await newCars.nth(0).getByTestId("car-item-price")
+    await newCars.nth(0).getByTestId("car-item-price"),
   ).toBeVisible();
 
   await expect(await newCarsSection.getByTestId("show-all-btn")).toBeVisible();
@@ -55,6 +55,6 @@ test("should navigate to car page", async ({ page }) => {
   await expect.poll(async () => page.url()).toContain("/viaturas/");
 
   await expect(await page.getByTestId("car-title").textContent()).toEqual(
-    carTitle
+    carTitle,
   );
 });

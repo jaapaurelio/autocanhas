@@ -34,7 +34,7 @@ export default function Header({ hero }: Props) {
         <Content
           className={classnames(
             "py-2 flex items-center justify-end flex-col sm:flex-row text-sm",
-            { "text-primaryConstrast": !hero, "text-white": hero }
+            { "text-primaryConstrast": !hero, "text-white": hero },
           )}
         >
           <div>
@@ -68,7 +68,7 @@ export default function Header({ hero }: Props) {
                 {
                   "text-gray-700": !hero,
                   "text-white": hero,
-                }
+                },
               )}
             >
               {option.title}

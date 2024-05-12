@@ -35,7 +35,7 @@ async function fetchData() {
 
   const response = await client.fetch<{ cars: Car[]; totalCars: number }>(
     query,
-    {}
+    {},
   );
   return response;
 }
