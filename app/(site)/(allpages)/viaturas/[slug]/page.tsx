@@ -199,9 +199,9 @@ export default async function Viatura({ params: { slug } }: Props) {
             </div>
           )}
           {!!car.article && (
-            <div className="my-10 article">
+            <article className="my-10 article">
               {<Markdown>{car.article}</Markdown>}
-            </div>
+            </article>
           )}
           <div className="my-10">
             <H2 gutterTop>Informação adicional</H2>

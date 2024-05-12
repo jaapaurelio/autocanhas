@@ -294,17 +294,19 @@
 
 .article {
   font-size: 1.125rem;
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     margin: 1rem 0 0.5rem 0;
     font-weight: bold;
   }
 
   h1 {
-    font-size: 1.6rem;  
+    font-size: 1.6rem;
   }
-  
+
   h2 {
-    font-size: 1.4rem;  
+    font-size: 1.4rem;
   }
 
   h3 {
