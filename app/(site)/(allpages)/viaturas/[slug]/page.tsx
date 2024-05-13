@@ -245,9 +245,7 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const car = await fetchCar(slug);
 
-  const images = car.photos.map((photo) =>
-    urlForImage(photo).width(1200).format("webp").url(),
-  );
+  const images = urlForImage(car.photos[0]).width(1200).format("webp").url();
 
   return {
     title: `${car.title} de ${car.year} com ${formatNumber(car.km)} km ${car.fuel}`,
