@@ -118,7 +118,7 @@ const car = defineType({
       name: "year",
       type: "number",
       title: "Ano",
-      validation: (Rule) => Rule.required().min(1900).max(2024),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "km",
